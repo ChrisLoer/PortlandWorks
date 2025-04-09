@@ -1,0 +1,164 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-04-09",
+  "dataSource": "Portland City Budget Office",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "police-2024",
+      "name": "Police",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 261000000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": ["police-patrol-2024", "police-investigations-2024"],
+      "fundingSources": ["General Fund"],
+      "notes": "Includes both sworn officers and civilian staff. Per capita spending: $411 per resident",
+      "references": [
+        {
+          "title": "Portland Police Bureau Budget",
+          "url": "https://www.portland.gov/police/budget"
+        }
+      ],
+      "allocation": 0.057,
+      "description": "Portland Police Bureau budget allocation"
+    },
+    {
+      "id": "fire-2024",
+      "name": "Fire & Rescue",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 175000000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["General Fund"],
+      "notes": "Per capita spending: $276 per resident",
+      "references": [],
+      "allocation": 0.038,
+      "description": "Portland Fire & Rescue budget allocation"
+    },
+    {
+      "id": "parks-2024",
+      "name": "Parks & Recreation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 190000000,
+      "totalRevenue": 15000000,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["General Fund", "Parks Levy", "Fees"],
+      "notes": "Includes park maintenance, recreation programs, and community centers. Per capita spending: $300 per resident",
+      "references": [
+        {
+          "title": "Portland Parks & Recreation Budget",
+          "url": "https://www.portland.gov/parks/budget"
+        }
+      ],
+      "allocation": 0.041,
+      "description": "Parks maintenance and recreational programs"
+    },
+    {
+      "id": "water-2024",
+      "name": "Water Bureau",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 329000000,
+      "totalRevenue": 329000000,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["Water Rates"],
+      "notes": "Major capital investment in filtration plant",
+      "references": [],
+      "allocation": 0.072,
+      "description": "Water utility operations and capital improvements"
+    },
+    {
+      "id": "transportation-2024",
+      "name": "Transportation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 180000000,
+      "totalRevenue": 30000000,
+      "year": 2024,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": ["transportation-maintenance-2024", "transportation-planning-2024"],
+      "fundingSources": ["Gas Tax", "General Fund", "Federal Grants"],
+      "notes": "Includes street maintenance, traffic signals, and planning",
+      "references": [
+        {
+          "title": "Portland Bureau of Transportation Budget",
+          "url": "https://www.portland.gov/transportation/budget"
+        }
+      ],
+      "allocation": 0.039,
+      "description": "Transportation infrastructure and services"
+    },
+    {
+      "id": "pcef-2024",
+      "name": "Portland Clean Energy Fund",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 193800000,
+      "totalRevenue": 193800000,
+      "year": 2024,
+      "grouping": "Environment",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["1% Tax on Large Retailers"],
+      "notes": "Climate fund created by voters in 2018. Expected to reduce ~85,000 metric tons of CO₂",
+      "references": [],
+      "allocation": 0.042,
+      "description": "Climate and environmental initiatives"
+    },
+    {
+      "id": "housing-2024",
+      "name": "Housing",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 150000000,
+      "totalRevenue": 20000000,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["Housing Bond", "Federal Grants", "General Fund"],
+      "notes": "Affordable housing initiatives and homelessness services",
+      "references": [
+        {
+          "title": "Portland Housing Bureau Budget",
+          "url": "https://www.portland.gov/housing/budget"
+        }
+      ],
+      "allocation": 0.033,
+      "description": "Affordable housing initiatives and programs"
+    },
+    {
+      "id": "other-2024",
+      "name": "Other Services",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 300000000,
+      "totalRevenue": 50000000,
+      "year": 2024,
+      "grouping": "Various",
+      "parentId": null,
+      "children": [],
+      "fundingSources": ["Various"],
+      "notes": "Various other city services and programs",
+      "references": [],
+      "allocation": 0.065,
+      "description": "Various other city services and programs"
+    }
+  ]
+} 

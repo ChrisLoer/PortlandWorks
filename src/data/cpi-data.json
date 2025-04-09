@@ -1,0 +1,33 @@
+{
+  "lastUpdated": "2024-04-09",
+  "dataSource": "U.S. Bureau of Labor Statistics",
+  "dataSourceUrl": "https://www.bls.gov/cpi/",
+  "baseYear": 2024,
+  "annualData": [
+    {
+      "year": 2020,
+      "value": 258.811,
+      "notes": "Base year for comparison"
+    },
+    {
+      "year": 2021,
+      "value": 271.696,
+      "notes": "Significant inflation due to pandemic recovery"
+    },
+    {
+      "year": 2022,
+      "value": 292.655,
+      "notes": "Peak inflation period"
+    },
+    {
+      "year": 2023,
+      "value": 304.702,
+      "notes": "Inflation moderating"
+    },
+    {
+      "year": 2024,
+      "value": 310.326,
+      "notes": "Current year (projected)"
+    }
+  ]
+} 
