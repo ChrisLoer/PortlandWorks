@@ -1,0 +1,41 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Portland Public Schools – FY 2024‑25 Proposed Budget (Volume 1)",
+  "dataSourceUrl": "https://www.pps.net",
+  "departments": [
+    {
+      "id": "pps-facilities-2024-25",
+      "name": "Facilities Acquisition & Construction",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 1027836000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Facilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Capital projects funded primarily by voter‑approved bonds.",
+      "allocation": 0.43,
+      "description": "Facilities Acquisition & Construction functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 43.5,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    }
+  ]
+}

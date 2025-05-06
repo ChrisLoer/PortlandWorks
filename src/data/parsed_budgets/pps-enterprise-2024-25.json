@@ -1,0 +1,41 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Portland Public Schools – FY 2024‑25 Proposed Budget (Volume 1)",
+  "dataSourceUrl": "https://www.pps.net",
+  "departments": [
+    {
+      "id": "pps-enterprise-2024-25",
+      "name": "Enterprise & Community Services",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 33302000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Nutrition, community programs, and fee‑supported services.",
+      "allocation": 0.014,
+      "description": "Enterprise & Community Services functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 230.27,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    }
+  ]
+}

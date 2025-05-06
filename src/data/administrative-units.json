@@ -92,6 +92,21 @@
           "url": "https://www.census.gov/quickfacts/seattletacomabellevuemetropolitanstatisticalarea"
         }
       ]
+    },
+    {
+      "id": "pps-district",
+      "name": "Portland Public Schools",
+      "type": "School District",
+      "state": "Oregon",
+      "population": 600000,
+      "year": 2024,
+      "notes": "Estimated PK‑12 enrollment for 2024‑25",
+      "references": [
+        {
+          "title": "PPS Enrollment Forecast 2024‑25",
+          "url": "https://www.pps.net/Page/208"
+        }
+      ]
     }
   ]
 } 

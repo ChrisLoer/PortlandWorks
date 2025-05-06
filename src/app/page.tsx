@@ -1,4 +1,4 @@
-import PerCapitaDonutChart from '@/components/charts/PerCapitaDonutChart';
+import PerCapitaDonutChartClient from '@/components/charts/PerCapitaDonutChartClient';
 import FundingSourcesChart from '@/components/charts/FundingSourcesChart';
 import BudgetBreakdownSelector from '@/components/BudgetBreakdownSelector';
 import { BudgetItem, AdministrativeUnit, CPIData, BudgetData, AdministrativeUnitsData } from '@/types/budget';
@@ -119,7 +119,7 @@ export default async function Home() {
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900">Per Capita Spending by Administrative Unit</h2>
-          <PerCapitaDonutChart 
+          <PerCapitaDonutChartClient 
             departments={topLevelDepartments}
             administrativeUnits={adminUnitsData.units}
             cpiData={sampleCPIData}
@@ -149,7 +149,7 @@ export default async function Home() {
 
         <h2 className="text-2xl font-semibold mb-4 text-gray-900">Department Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {topLevelDepartments.map((dept) => {
+          {topLevelDepartments.map((dept, idx) => {
             const adminUnit = adminUnitsData.units.find(unit => {
               if (unit.name === 'Portland' && dept.administrativeUnit === 'City') {
                 return true;
@@ -162,7 +162,7 @@ export default async function Home() {
             if (!adminUnit) return null;
             
             return (
-              <div key={dept.id} className="bg-white rounded-lg shadow p-4">
+              <div key={`${dept.id}-${idx}`} className="bg-white rounded-lg shadow p-4">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{dept.name}</h3>
                 <p className="text-gray-700 mb-2">{dept.description}</p>
                 

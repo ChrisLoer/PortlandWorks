@@ -1,0 +1,41 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Portland Public Schools – FY 2024‑25 Proposed Budget (Volume 1)",
+  "dataSourceUrl": "https://www.pps.net",
+  "departments": [
+    {
+      "id": "pps-debt-2024-25",
+      "name": "Debt Service",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 262135000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Debt Service",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "GO bond and pension obligation debt service payments.",
+      "allocation": 0.11,
+      "description": "Debt Service functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 0,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    }
+  ]
+}
