@@ -1,0 +1,48 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "merc-venues-2024-25",
+      "name": "MERC Visitor Venues",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 112740294,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Visitor Venues",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Transient Lodging Tax",
+        "Sales & Admissions",
+        "Food & Beverage"
+      ],
+      "notes": "Oregon Convention Center, Portland’5 Centers for the Arts, Expo Center.",
+      "allocation": 0.054,
+      "description": "Convention & performing arts venues operations",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Part of visitor venues total",
+          "source": "Metro MERC"
+        },
+        {
+          "id": "transient-lodging-tax",
+          "name": "Transient Lodging Tax Revenue",
+          "value": 21354530,
+          "unit": "USD",
+          "category": "revenue",
+          "description": "FY 25 budgeted TLT revenue for MERC venues",
+          "source": "Metro visitor venues"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro \u2013 FY\u202f2024\u201125 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "metro-general-fund-2024-25",
+      "name": "General Fund \u2013 Central Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 220000000,
+      "totalRevenue": 220000000,
+      "year": 2024,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Property Taxes",
+        "Excise Taxes",
+        "Intergovernmental Revenues"
+      ],
+      "notes": "Funds central administrative functions plus Planning, Development & Research. Transfers to Zoo and Parks.",
+      "allocation": 0.105,
+      "description": "Central administrative and general government services",
+      "metrics": []
+    }
+  ]
+}

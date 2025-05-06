@@ -1,0 +1,48 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "parks-nature-2024-25",
+      "name": "Parks & Nature",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 42306014,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Environment",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Local Option Levy",
+        "General Fund Transfer",
+        "Bond Proceeds"
+      ],
+      "notes": "Protects natural areas and manages regional parks and trails.",
+      "allocation": 0.02,
+      "description": "Regional parks, trails, natural areas stewardship",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "FTE includes 7.5 additions in FY25",
+          "source": "Metro Parks & Nature budget"
+        },
+        {
+          "id": "bond-capital-spend",
+          "name": "Bond Capital Spend",
+          "value": 58000000,
+          "unit": "USD",
+          "category": "capital",
+          "description": "FY 25 capital spend from 2019 Parks & Nature bond",
+          "source": "Metro budget Parks section"
+        }
+      ]
+    }
+  ]
+}

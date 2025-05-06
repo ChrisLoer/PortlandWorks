@@ -1,0 +1,48 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "police-2024-25",
+      "name": "Police",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 295055810,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Grants Fund",
+        "Police Special Revenue Fund"
+      ],
+      "notes": "Adopted operating budget only; no capital projects in FY 24‑25.",
+      "allocation": 0.036,
+      "description": "Portland Police Bureau budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1224,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "average-travel-time-high-priority",
+          "name": "Avg Travel Time – High Priority Calls",
+          "value": 8.02,
+          "unit": "minutes",
+          "category": "performance",
+          "description": "Average travel time to high priority dispatched calls",
+          "source": "Precinct Patrol performance measures"
+        }
+      ]
+    }
+  ]
+}

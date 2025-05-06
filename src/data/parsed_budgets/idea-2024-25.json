@@ -1,0 +1,40 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "TriMet – FY 2025 Adopted Budget",
+  "dataSourceUrl": "https://trimet.org",
+  "departments": [
+    {
+      "id": "idea-2024-25",
+      "name": "Inclusion, Diversity, Equity & Accessibility",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 2839974,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Equity",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $2.8 M; CIP: $0.0 M.",
+      "allocation": 0.002,
+      "description": "Inclusion, Diversity, Equity & Accessibility division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 13,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    }
+  ]
+}

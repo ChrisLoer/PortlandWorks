@@ -1,0 +1,43 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "bps-2024-25",
+      "name": "Planning & Sustainability",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 692123396,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Community & Economic Development",
+      "parentId": null,
+      "children": [
+        "pcef-2024-25"
+      ],
+      "fundingSources": [
+        "General Fund",
+        "Solid Waste Management Fund",
+        "PCEF",
+        "Grants",
+        "Fees"
+      ],
+      "notes": "Includes Portland Clean Energy Fund and Graffiti Abatement programs.",
+      "allocation": 0.084,
+      "description": "Citywide planning, climate, sustainability, and franchise utility regulation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 150.8,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    }
+  ]
+}

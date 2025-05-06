@@ -1,0 +1,49 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "parks-2024-25",
+      "name": "Parks & Recreation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 607790136,
+      "totalRevenue": 15000000,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "2020 Parks Local Option Levy",
+        "Fees & Charges",
+        "Grants"
+      ],
+      "notes": "Capital program is $57.5 M; operating is $550.3 M.",
+      "allocation": 0.073,
+      "description": "Parks maintenance, recreation programs, natural‑area stewardship",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 836,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "park-acres",
+          "name": "Park Acres",
+          "value": 12000,
+          "unit": "acres",
+          "category": "facilities",
+          "description": "Total acres of park land managed",
+          "source": "PP&R Bureau Overview"
+        }
+      ]
+    }
+  ]
+}

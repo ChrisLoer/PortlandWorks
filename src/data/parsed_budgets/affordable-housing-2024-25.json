@@ -1,0 +1,46 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "affordable-housing-2024-25",
+      "name": "Affordable Housing Bond Program",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 362560310,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Affordable Housing GO Bond"
+      ],
+      "notes": "$652.8 M bond approved in 2018; over 4,700 units in pipeline.",
+      "allocation": 0.173,
+      "description": "Creation of permanently affordable homes across the region",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Staffing within Housing Department",
+          "source": "Metro budget"
+        },
+        {
+          "id": "affordable-units-pipeline",
+          "name": "Affordable Units Pipeline",
+          "value": 4700,
+          "unit": "count",
+          "category": "housing",
+          "description": "Units completed or in pipeline funded by 2018 affordable housing bond",
+          "source": "Metro housing bond progress"
+        }
+      ]
+    }
+  ]
+}

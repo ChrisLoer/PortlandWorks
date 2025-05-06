@@ -1,0 +1,39 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "environmental-services-2024-25",
+      "name": "Environmental Services",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 1655524901,
+      "totalRevenue": 1655524901,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Sewer & Stormwater Rates",
+        "Bond Proceeds",
+        "System Development Charges"
+      ],
+      "notes": "Wastewater and stormwater infrastructure operations and capital program.",
+      "allocation": 0.2,
+      "description": "Wastewater and stormwater services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 671,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    }
+  ]
+}

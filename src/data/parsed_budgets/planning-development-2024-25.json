@@ -1,0 +1,29 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro \u2013 FY\u202f2024\u201125 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "planning-development-2024-25",
+      "name": "Planning, Development & Research",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 15893681,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Planning",
+      "parentId": "metro-general-fund-2024-25",
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Federal Grants",
+        "State Grants"
+      ],
+      "notes": "Regional land use and transportation planning, research and data.",
+      "allocation": 0.0076,
+      "description": "Regional land use and transportation planning",
+      "metrics": []
+    }
+  ]
+}

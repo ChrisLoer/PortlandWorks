@@ -1,0 +1,46 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "solid-waste-2024-25",
+      "name": "Waste Prevention & Environmental Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 162225478,
+      "totalRevenue": 162225478,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Solid Waste Tip Fees"
+      ],
+      "notes": "Operates regional transfer stations, recycling, and waste reduction programs.",
+      "allocation": 0.077,
+      "description": "Solid waste disposal and waste reduction services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 201.3,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total FTE in Waste Prevention & Environmental Services",
+          "source": "Metro WPES section"
+        },
+        {
+          "id": "tip-fee-increase",
+          "name": "Tip Fee Increase",
+          "value": 11.9,
+          "unit": "percent",
+          "category": "policy",
+          "description": "FY 25 tip fee increase under new cost recovery model",
+          "source": "Metro WPES section"
+        }
+      ]
+    }
+  ]
+}

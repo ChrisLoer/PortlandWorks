@@ -1,0 +1,48 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "water-2024-25",
+      "name": "Water Bureau",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 1795011173,
+      "totalRevenue": 1795011173,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Water Rates",
+        "System Development Charges",
+        "Bond Proceeds"
+      ],
+      "notes": "Large increase reflects $484.5 M for Bull Run Filtration construction.",
+      "allocation": 0.217,
+      "description": "Water utility operations and capital improvements",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 659,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "domestic-services",
+          "name": "Domestic Services",
+          "value": 179000,
+          "unit": "count",
+          "category": "infrastructure",
+          "description": "Number of domestic water service connections",
+          "source": "Distribution Services program description"
+        }
+      ]
+    }
+  ]
+}

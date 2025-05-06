@@ -1,0 +1,40 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "transportation-2024-25",
+      "name": "Transportation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 433600000,
+      "totalRevenue": 30000000,
+      "year": 2024,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Gas Tax",
+        "Parking Revenues",
+        "Federal/State Grants",
+        "General Transportation Revenue"
+      ],
+      "notes": "Operating budget only; PBOT capital projects appear in separate Transportation Operating Fund table.",
+      "allocation": 0.052,
+      "description": "Streets, signals, active‑transportation and planning services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1044,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        }
+      ]
+    }
+  ]
+}

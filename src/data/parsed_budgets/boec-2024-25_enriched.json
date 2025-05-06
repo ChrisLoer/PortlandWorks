@@ -1,0 +1,48 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "boec-2024-25",
+      "name": "Emergency Communications",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 40125433,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "911 Excise Tax",
+        "Intergovernmental Revenues"
+      ],
+      "notes": "Countywide 9‑1‑1 call‑taking and dispatch services.",
+      "allocation": 0.005,
+      "description": "9‑1‑1 call answering and dispatch",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 169.9,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        },
+        {
+          "id": "emergency-911-calls",
+          "name": "Emergency 9‑1‑1 Calls",
+          "value": 700000,
+          "unit": "count",
+          "category": "workload",
+          "description": "Total emergency 9‑1‑1 telephone calls (target FY 24‑25)",
+          "source": "BOEC Performance Measures"
+        }
+      ]
+    }
+  ]
+}

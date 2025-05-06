@@ -49,6 +49,21 @@
       ]
     },
     {
+      "id": "trimet-district",
+      "name": "TriMet",
+      "type": "Transit Agency",
+      "state": "Oregon",
+      "population": 1800000,
+      "year": 2024,
+      "notes": "Tri-County Metropolitan Transportation District of Oregon (serves Multnomah, Washington, and Clackamas counties)",
+      "references": [
+        {
+          "title": "TriMet Service District Area",
+          "url": "https://trimet.org/about/service.htm"
+        }
+      ]
+    },
+    {
       "id": "seattle-city",
       "name": "Seattle",
       "type": "City",

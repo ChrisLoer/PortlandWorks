@@ -1,0 +1,40 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "TriMet – FY 2025 Adopted Budget",
+  "dataSourceUrl": "https://trimet.org",
+  "departments": [
+    {
+      "id": "it-2024-25",
+      "name": "Information Technology",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 46260886,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $35.4 M; CIP: $10.9 M.",
+      "allocation": 0.025,
+      "description": "Information Technology division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 112,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "TriMet – FY 2025 Adopted Budget",
+  "dataSourceUrl": "https://trimet.org",
+  "departments": [
+    {
+      "id": "tsas-2024-25",
+      "name": "Transit System & Asset Support",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 20711290,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $20.7 M; CIP: $0.0 M.",
+      "allocation": 0.011,
+      "description": "Transit System & Asset Support division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 133,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    }
+  ]
+}

@@ -1,8 +1,9 @@
-import BudgetPieChart from '@/components/charts/BudgetPieChart';
-import PerCapitaBarChart from '@/components/charts/PerCapitaBarChart';
+import PerCapitaDonutChart from '@/components/charts/PerCapitaDonutChart';
 import FundingSourcesChart from '@/components/charts/FundingSourcesChart';
-import sampleData from '@/data/sample-budget.json';
-import { BudgetItem, AdministrativeUnit, CPIData } from '@/types/budget';
+import BudgetBreakdownSelector from '@/components/BudgetBreakdownSelector';
+import { BudgetItem, AdministrativeUnit, CPIData, BudgetData, AdministrativeUnitsData } from '@/types/budget';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 // Create a default administrative unit for Portland
 const portlandCity: AdministrativeUnit = {
@@ -36,42 +37,104 @@ const sampleCPIData: CPIData = {
   ]
 };
 
-// Transform the sample data to match the BudgetItem type
-const transformedDepartments: BudgetItem[] = sampleData.departments.map(dept => ({
-  ...dept,
-  administrativeUnitId: portlandCity.id
-}));
+async function getAdministrativeUnits(): Promise<AdministrativeUnitsData> {
+  try {
+    const filePath = path.join(process.cwd(), 'src/data/administrative-units.json');
+    const content = await fs.readFile(filePath, 'utf-8');
+    return JSON.parse(content);
+  } catch (error) {
+    console.error('Error loading administrative units data:', error);
+    throw new Error('Failed to load administrative units data');
+  }
+}
 
-export default function Home() {
+async function getBudgetData(): Promise<BudgetData> {
+  try {
+    // Get the absolute path to the parsed_budgets directory
+    const budgetsDir = path.join(process.cwd(), 'src/data/parsed_budgets');
+    
+    // Read all files in the directory
+    const files = await fs.readdir(budgetsDir);
+    
+    // Filter for JSON files
+    const jsonFiles = files.filter(file => file.endsWith('.json'));
+    
+    // Read and parse each JSON file
+    const budgets: BudgetData[] = await Promise.all(
+      jsonFiles.map(async (file) => {
+        const filePath = path.join(budgetsDir, file);
+        const content = await fs.readFile(filePath, 'utf-8');
+        return JSON.parse(content);
+      })
+    );
+    
+    // Combine all budgets into a single data structure
+    return {
+      fiscalYear: budgets[0].fiscalYear, // Use the first budget's fiscal year
+      lastUpdated: new Date().toISOString().split('T')[0],
+      dataSource: 'Combined Budget Data',
+      dataSourceUrl: '',
+      departments: budgets.flatMap(budget => budget.departments)
+    };
+  } catch (error) {
+    console.error('Error loading budget data:', error);
+    throw new Error('Failed to load budget data');
+  }
+}
+
+export default async function Home() {
+  const [budgetData, adminUnitsData] = await Promise.all([
+    getBudgetData(),
+    getAdministrativeUnits()
+  ]);
+  
+  // Transform the departments to match the BudgetItem type
+  const transformedDepartments: BudgetItem[] = budgetData.departments.map((dept: any) => ({
+    ...dept,
+    administrativeUnitId: dept.administrativeUnit.toLowerCase().replace(/\s+/g, '-')
+  }));
+  
   // Get top-level departments only
   const topLevelDepartments = transformedDepartments.filter(dept => dept.parentId === null);
   
+  // Group departments by administrative unit
+  const departmentsByAdminUnit = topLevelDepartments.reduce((acc, dept) => {
+    const adminUnit = dept.administrativeUnit;
+    if (!acc[adminUnit]) {
+      acc[adminUnit] = [];
+    }
+    acc[adminUnit].push(dept);
+    return acc;
+  }, {} as Record<string, BudgetItem[]>);
+
   return (
     <main className="min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-2">Portland Metro Budget Explorer</h1>
         <p className="text-gray-600 mb-8">
-          Data source: <a href={sampleData.dataSourceUrl} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{sampleData.dataSource}</a>
+          Data source: <a href={budgetData.dataSourceUrl} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{budgetData.dataSource}</a>
           <span className="mx-2">|</span>
-          Last updated: {sampleData.lastUpdated}
+          Last updated: {budgetData.lastUpdated}
         </p>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Fiscal Year {sampleData.fiscalYear} Budget Overview</h2>
-          <BudgetPieChart departments={transformedDepartments} showOnlyTopLevel={true} />
+          <h2 className="text-2xl font-semibold mb-4">Per Capita Spending by Administrative Unit</h2>
+          <PerCapitaDonutChart 
+            departments={topLevelDepartments}
+            administrativeUnits={adminUnitsData.units}
+            cpiData={sampleCPIData}
+          />
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4">Per Capita Expenses</h2>
+            <h2 className="text-2xl font-semibold mb-4">Total Budget by Administrative Unit</h2>
             <p className="text-gray-600 mb-4">
-              Comparing per capita expenses across departments helps understand how resources are allocated relative to population.
+              Select an administrative unit to view its total budget breakdown.
             </p>
-            <PerCapitaBarChart 
-              items={transformedDepartments}
-              administrativeUnit={portlandCity}
-              cpiData={sampleCPIData}
-              showOnlyTopLevel={true}
+            <BudgetBreakdownSelector 
+              administrativeUnits={adminUnitsData.units}
+              departments={transformedDepartments}
             />
           </div>
           
@@ -86,79 +149,92 @@ export default function Home() {
 
         <h2 className="text-2xl font-semibold mb-4">Department Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {topLevelDepartments.map((dept) => (
-            <div key={dept.id} className="bg-white rounded-lg shadow p-4">
-              <h3 className="text-xl font-semibold mb-2">{dept.name}</h3>
-              <p className="text-gray-600 mb-2">{dept.description}</p>
-              
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                <div>
-                  <span className="text-sm text-gray-500">Total Expense</span>
-                  <p className="text-lg font-medium">${(dept.totalExpense / 1000000).toFixed(1)}M</p>
+          {topLevelDepartments.map((dept) => {
+            const adminUnit = adminUnitsData.units.find(unit => {
+              if (unit.name === 'Portland' && dept.administrativeUnit === 'City') {
+                return true;
+              }
+              if (unit.name === 'Portland Metro' && dept.administrativeUnit === 'Metro') {
+                return true;
+              }
+              return unit.name.toLowerCase() === dept.administrativeUnit.toLowerCase();
+            });
+            if (!adminUnit) return null;
+            
+            return (
+              <div key={dept.id} className="bg-white rounded-lg shadow p-4">
+                <h3 className="text-xl font-semibold mb-2 text-gray-700">{dept.name}</h3>
+                <p className="text-gray-600 mb-2">{dept.description}</p>
+                
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div>
+                    <span className="text-sm text-gray-700">Total Expense</span>
+                    <p className="text-lg font-medium text-gray-800">${(dept.totalExpense / 1000000).toFixed(1)}M</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-700">Per Capita</span>
+                    <p className="text-lg font-medium text-gray-800">${(dept.totalExpense / adminUnit.population).toFixed(2)}</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-700">Revenue</span>
+                    <p className="text-lg font-medium text-gray-800">${(dept.totalRevenue / 1000000).toFixed(1)}M</p>
+                  </div>
+                  <div>
+                    <span className="text-sm text-gray-700">% of Total</span>
+                    <p className="text-lg font-medium text-gray-800">{(dept.allocation * 100).toFixed(1)}%</p>
+                  </div>
                 </div>
-                <div>
-                  <span className="text-sm text-gray-500">Per Capita</span>
-                  <p className="text-lg font-medium">${(dept.totalExpense / portlandCity.population).toFixed(2)}</p>
-                </div>
-                <div>
-                  <span className="text-sm text-gray-500">Revenue</span>
-                  <p className="text-lg font-medium">${(dept.totalRevenue / 1000000).toFixed(1)}M</p>
-                </div>
-                <div>
-                  <span className="text-sm text-gray-500">% of Total</span>
-                  <p className="text-lg font-medium">{(dept.allocation * 100).toFixed(1)}%</p>
-                </div>
-              </div>
-              
-              <div className="mb-2">
-                <span className="text-sm text-gray-500">Funding Sources:</span>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {dept.fundingSources.map((source, index) => (
-                    <span key={index} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-                      {source}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              {dept.children.length > 0 && (
-                <div className="mt-2">
-                  <span className="text-sm text-gray-500">Sub-departments:</span>
-                  <ul className="list-disc list-inside text-sm mt-1">
-                    {dept.children.map(childId => {
-                      const child = transformedDepartments.find(d => d.id === childId);
-                      return child ? (
-                        <li key={childId} className="text-gray-700">
-                          {child.name} (${(child.totalExpense / 1000000).toFixed(1)}M)
-                        </li>
-                      ) : null;
-                    })}
-                  </ul>
-                </div>
-              )}
-              
-              {dept.notes && (
-                <div className="mt-2 text-sm text-gray-600 italic">
-                  {dept.notes}
-                </div>
-              )}
-              
-              {dept.references && dept.references.length > 0 && (
-                <div className="mt-2 text-sm">
-                  <span className="text-gray-500">References:</span>
-                  <ul className="list-disc list-inside mt-1">
-                    {dept.references.map((ref, index) => (
-                      <li key={index}>
-                        <a href={ref.url} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
-                          {ref.title}
-                        </a>
-                      </li>
+                
+                <div className="mb-2">
+                  <span className="text-sm text-gray-700">Funding Sources:</span>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    {dept.fundingSources.map((source, index) => (
+                      <span key={index} className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
+                        {source}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-              )}
-            </div>
-          ))}
+                
+                {dept.children.length > 0 && (
+                  <div className="mt-2">
+                    <span className="text-sm text-gray-700">Sub-departments:</span>
+                    <ul className="list-disc list-inside text-sm mt-1">
+                      {dept.children.map(childId => {
+                        const child = transformedDepartments.find(d => d.id === childId);
+                        return child ? (
+                          <li key={childId} className="text-gray-700">
+                            {child.name} (${(child.totalExpense / 1000000).toFixed(1)}M)
+                          </li>
+                        ) : null;
+                      })}
+                    </ul>
+                  </div>
+                )}
+                
+                {dept.notes && (
+                  <div className="mt-2 text-sm text-gray-600 italic">
+                    {dept.notes}
+                  </div>
+                )}
+                
+                {dept.references && dept.references.length > 0 && (
+                  <div className="mt-2 text-sm">
+                    <span className="text-gray-700">References:</span>
+                    <ul className="list-disc list-inside mt-1">
+                      {dept.references.map((ref, index) => (
+                        <li key={index}>
+                          <a href={ref.url} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                            {ref.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </main>

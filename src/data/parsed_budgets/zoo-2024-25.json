@@ -1,0 +1,49 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "zoo-2024-25",
+      "name": "Oregon Zoo",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 78280111,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Visitor Venues",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Admissions",
+        "General Fund Transfer",
+        "Grants",
+        "Food & Merchandise"
+      ],
+      "notes": "Assumes modest attendance recovery; includes $11.1 M capital funding.",
+      "allocation": 0.037,
+      "description": "Regional zoo operations and conservation education",
+      "metrics": [
+        {
+          "id": "attendance",
+          "name": "Projected Attendance",
+          "value": 1300000,
+          "unit": "count",
+          "category": "usage",
+          "description": "Projected zoo visitors for FY 24‑25 (~87% of pre‑pandemic)",
+          "source": "Metro Zoo section"
+        },
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Part of visitor venues staffing",
+          "source": "Metro visitor venues"
+        }
+      ]
+    }
+  ]
+}

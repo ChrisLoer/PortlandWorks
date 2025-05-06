@@ -1,0 +1,46 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro – FY 2024‑25 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "supportive-housing-2024-25",
+      "name": "Supportive Housing Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 807598166,
+      "totalRevenue": 807598166,
+      "year": 2024,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Personal & Business Income Tax"
+      ],
+      "notes": "Fourth year of ten‑year program funded by regional income taxes.",
+      "allocation": 0.386,
+      "description": "Regional supportive housing and homelessness services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Housing Department FTE rolled into Metro total; program staffing included in counties.",
+          "source": "Metro budget FTE table"
+        },
+        {
+          "id": "households-stabilized",
+          "name": "Households Stabilized",
+          "value": 6000,
+          "unit": "count",
+          "category": "service",
+          "description": "Households stabilized to date under SHS program",
+          "source": "Metro Housing progress"
+        }
+      ]
+    }
+  ]
+}

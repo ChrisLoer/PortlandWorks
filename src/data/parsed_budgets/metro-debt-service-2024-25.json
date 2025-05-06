@@ -1,0 +1,28 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "Metro \u2013 FY\u202f2024\u201125 Approved Budget Review",
+  "dataSourceUrl": "https://www.oregonmetro.gov",
+  "departments": [
+    {
+      "id": "metro-debt-service-2024-25",
+      "name": "Debt Service",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 92662993,
+      "totalRevenue": 92662993,
+      "year": 2024,
+      "grouping": "Debt Service",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Property Taxes",
+        "Bond Proceeds"
+      ],
+      "notes": "Payments on bonds for Affordable Housing, Natural Areas, Zoo, Convention Center, Expo.",
+      "allocation": 0.044,
+      "description": "Principal and interest payments on Metro general obligation bonds",
+      "metrics": []
+    }
+  ]
+}

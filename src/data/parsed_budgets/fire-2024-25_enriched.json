@@ -1,0 +1,47 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-06-30",
+  "dataSource": "City of Portland – FY 2024‑25 Adopted Budget (Volumes 1‑3)",
+  "dataSourceUrl": "https://www.portland.gov/budget",
+  "departments": [
+    {
+      "id": "fire-2024-25",
+      "name": "Fire & Rescue",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 193809032,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Capital Grants"
+      ],
+      "notes": "Includes $6.6 M in capital outlay for apparatus and station improvements.",
+      "allocation": 0.023,
+      "description": "Portland Fire & Rescue budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 768,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "total-incidents",
+          "name": "Total Incidents",
+          "value": 88761,
+          "unit": "count",
+          "category": "workload",
+          "description": "Total number of incidents responded to (all hazards)",
+          "source": "Emergency Operations performance measures"
+        }
+      ]
+    }
+  ]
+}
