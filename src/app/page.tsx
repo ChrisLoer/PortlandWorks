@@ -108,17 +108,17 @@ export default async function Home() {
   }, {} as Record<string, BudgetItem[]>);
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="min-h-screen p-8 bg-gray-50">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-2">Portland Metro Budget Explorer</h1>
-        <p className="text-gray-600 mb-8">
-          Data source: <a href={budgetData.dataSourceUrl} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">{budgetData.dataSource}</a>
+        <h1 className="text-4xl font-bold mb-2 text-gray-900">Portland Metro Budget Explorer</h1>
+        <p className="text-gray-700 mb-8">
+          Data source: <a href={budgetData.dataSourceUrl} className="text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">{budgetData.dataSource}</a>
           <span className="mx-2">|</span>
           Last updated: {budgetData.lastUpdated}
         </p>
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Per Capita Spending by Administrative Unit</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-gray-900">Per Capita Spending by Administrative Unit</h2>
           <PerCapitaDonutChart 
             departments={topLevelDepartments}
             administrativeUnits={adminUnitsData.units}
@@ -128,8 +128,8 @@ export default async function Home() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4">Total Budget by Administrative Unit</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">Total Budget by Administrative Unit</h2>
+            <p className="text-gray-700 mb-4">
               Select an administrative unit to view its total budget breakdown.
             </p>
             <BudgetBreakdownSelector 
@@ -139,15 +139,15 @@ export default async function Home() {
           </div>
           
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-semibold mb-4">Funding Sources</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-900">Funding Sources</h2>
+            <p className="text-gray-700 mb-4">
               Distribution of funding sources across departments.
             </p>
             <FundingSourcesChart departments={transformedDepartments} showOnlyTopLevel={true} />
           </div>
         </div>
 
-        <h2 className="text-2xl font-semibold mb-4">Department Details</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900">Department Details</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {topLevelDepartments.map((dept) => {
             const adminUnit = adminUnitsData.units.find(unit => {
@@ -163,25 +163,25 @@ export default async function Home() {
             
             return (
               <div key={dept.id} className="bg-white rounded-lg shadow p-4">
-                <h3 className="text-xl font-semibold mb-2 text-gray-700">{dept.name}</h3>
-                <p className="text-gray-600 mb-2">{dept.description}</p>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">{dept.name}</h3>
+                <p className="text-gray-700 mb-2">{dept.description}</p>
                 
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   <div>
                     <span className="text-sm text-gray-700">Total Expense</span>
-                    <p className="text-lg font-medium text-gray-800">${(dept.totalExpense / 1000000).toFixed(1)}M</p>
+                    <p className="text-lg font-medium text-gray-900">${(dept.totalExpense / 1000000).toFixed(1)}M</p>
                   </div>
                   <div>
                     <span className="text-sm text-gray-700">Per Capita</span>
-                    <p className="text-lg font-medium text-gray-800">${(dept.totalExpense / adminUnit.population).toFixed(2)}</p>
+                    <p className="text-lg font-medium text-gray-900">${(dept.totalExpense / adminUnit.population).toFixed(2)}</p>
                   </div>
                   <div>
                     <span className="text-sm text-gray-700">Revenue</span>
-                    <p className="text-lg font-medium text-gray-800">${(dept.totalRevenue / 1000000).toFixed(1)}M</p>
+                    <p className="text-lg font-medium text-gray-900">${(dept.totalRevenue / 1000000).toFixed(1)}M</p>
                   </div>
                   <div>
                     <span className="text-sm text-gray-700">% of Total</span>
-                    <p className="text-lg font-medium text-gray-800">{(dept.allocation * 100).toFixed(1)}%</p>
+                    <p className="text-lg font-medium text-gray-900">{(dept.allocation * 100).toFixed(1)}%</p>
                   </div>
                 </div>
                 
@@ -213,7 +213,7 @@ export default async function Home() {
                 )}
                 
                 {dept.notes && (
-                  <div className="mt-2 text-sm text-gray-600 italic">
+                  <div className="mt-2 text-sm text-gray-700 italic">
                     {dept.notes}
                   </div>
                 )}
@@ -224,7 +224,7 @@ export default async function Home() {
                     <ul className="list-disc list-inside mt-1">
                       {dept.references.map((ref, index) => (
                         <li key={index}>
-                          <a href={ref.url} className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">
+                          <a href={ref.url} className="text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">
                             {ref.title}
                           </a>
                         </li>

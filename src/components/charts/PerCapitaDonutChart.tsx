@@ -70,18 +70,18 @@ export default function PerCapitaDonutChart({
       {
         data: adminUnitData.map(data => data.perCapitaExpense),
         backgroundColor: [
-          'rgba(255, 99, 132, 0.5)',
-          'rgba(54, 162, 235, 0.5)',
-          'rgba(255, 206, 86, 0.5)',
-          'rgba(75, 192, 192, 0.5)',
-          'rgba(153, 102, 255, 0.5)',
+          'rgba(220, 53, 69, 0.7)',    // Darker red
+          'rgba(13, 110, 253, 0.7)',   // Darker blue
+          'rgba(255, 193, 7, 0.7)',    // Darker yellow
+          'rgba(25, 135, 84, 0.7)',    // Darker green
+          'rgba(111, 66, 193, 0.7)',   // Darker purple
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
+          'rgb(220, 53, 69)',          // Solid red
+          'rgb(13, 110, 253)',         // Solid blue
+          'rgb(255, 193, 7)',          // Solid yellow
+          'rgb(25, 135, 84)',          // Solid green
+          'rgb(111, 66, 193)',         // Solid purple
         ],
         borderWidth: 1,
       },
@@ -93,10 +93,21 @@ export default function PerCapitaDonutChart({
     plugins: {
       legend: {
         position: 'right' as const,
+        labels: {
+          color: 'rgb(55, 65, 81)',    // text-gray-700
+          font: {
+            size: 14
+          }
+        }
       },
       title: {
         display: true,
         text: `Total Per Capita Spending: $${totalPerCapitaSpending.toFixed(2)}`,
+        color: 'rgb(55, 65, 81)',      // text-gray-700
+        font: {
+          size: 16,
+          weight: 'bold' as const
+        }
       },
       tooltip: {
         callbacks: {
@@ -105,7 +116,15 @@ export default function PerCapitaDonutChart({
             const percentage = ((value / totalPerCapitaSpending) * 100).toFixed(1);
             return `${context.label}: $${value.toFixed(2)} (${percentage}%)`;
           }
-        }
+        },
+        titleColor: 'rgb(55, 65, 81)',  // text-gray-700
+        bodyColor: 'rgb(55, 65, 81)',   // text-gray-700
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        borderColor: 'rgb(209, 213, 219)', // border-gray-300
+        borderWidth: 1,
+        padding: 12,
+        displayColors: true,
+        boxPadding: 6
       }
     },
     cutout: '50%',
