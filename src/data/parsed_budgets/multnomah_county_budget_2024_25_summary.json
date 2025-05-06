@@ -1,0 +1,316 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2024-07-03",
+  "dataSource": "Multnomah County Budget Office",
+  "dataSourceUrl": "https://www.multco.us/budget",
+  "departments": [
+    {
+      "id": "multco-nondepartmental-2025",
+      "name": "Nondepartmental",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 236751899,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.077,
+      "description": "Nondepartmental budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 146.3,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-da-2025",
+      "name": "District Attorney",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 54623462,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.018,
+      "description": "District Attorney budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 235.9,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-humansvcs-2025",
+      "name": "County Human Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 371844534,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Human Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.121,
+      "description": "County Human Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 990.0,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-johs-2025",
+      "name": "Joint Office of Homeless Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 342490107,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.112,
+      "description": "Joint Office of Homeless Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 122.0,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-health-2025",
+      "name": "Health Department",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 545465024,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Health",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.178,
+      "description": "Health Department budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1696.31,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-communityjustice-2025",
+      "name": "Community Justice",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 119704797,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.039,
+      "description": "Community Justice budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 466.1,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-sheriff-2025",
+      "name": "Sheriff's Office",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 210052294,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.069,
+      "description": "Sheriff's Office budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 819.57,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-management-2025",
+      "name": "County Management",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 264818952,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.087,
+      "description": "County Management budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 312.0,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-assets-2025",
+      "name": "County Assets",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 606444749,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.198,
+      "description": "County Assets budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 406.5,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-library-2025",
+      "name": "Library",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 118707915,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Libraries & Culture",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.039,
+      "description": "Library budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 539.25,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-communityservices-2025",
+      "name": "Community Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 189755360,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.062,
+      "description": "Community Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 234.0,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    }
+  ]
+}

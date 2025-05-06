@@ -1,4 +1,4 @@
-import PerCapitaDonutChartClient from '@/components/charts/PerCapitaDonutChartClient';
+import PerCapitaMultiDonutChart from '@/components/charts/PerCapitaMultiDonutChart';
 import FundingSourcesChart from '@/components/charts/FundingSourcesChart';
 import BudgetBreakdownSelector from '@/components/BudgetBreakdownSelector';
 import { BudgetItem, AdministrativeUnit, CPIData, BudgetData, AdministrativeUnitsData } from '@/types/budget';
@@ -119,7 +119,7 @@ export default async function Home() {
         
         <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-900">Per Capita Spending by Administrative Unit</h2>
-          <PerCapitaDonutChartClient 
+          <PerCapitaMultiDonutChart 
             departments={topLevelDepartments}
             administrativeUnits={adminUnitsData.units}
             cpiData={sampleCPIData}
