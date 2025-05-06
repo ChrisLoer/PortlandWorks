@@ -82,6 +82,10 @@ async function getBudgetData(): Promise<BudgetData> {
   }
 }
 
+function slugify(str: string) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
 export default async function Home() {
   const [budgetData, adminUnitsData] = await Promise.all([
     getBudgetData(),
@@ -162,7 +166,7 @@ export default async function Home() {
             if (!adminUnit) return null;
             
             return (
-              <div key={`${dept.id}-${idx}`} className="bg-white rounded-lg shadow p-4">
+              <div key={`${dept.id}-${idx}`} id={slugify(dept.name)} className="bg-white rounded-lg shadow p-4">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{dept.name}</h3>
                 <p className="text-gray-700 mb-2">{dept.description}</p>
                 

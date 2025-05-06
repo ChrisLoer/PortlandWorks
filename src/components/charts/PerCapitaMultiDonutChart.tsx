@@ -3,7 +3,7 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { BudgetItem, AdministrativeUnit, CPIData } from "@/types/budget";
-import { useMemo } from "react";
+import { useMemo, useCallback, useRef } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -35,6 +35,10 @@ function shadeColor(color: string, percent: number) {
       .toString(16)
       .slice(1)
   );
+}
+
+function slugify(str: string) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }
 
 interface PerCapitaMultiDonutChartProps {
@@ -173,12 +177,39 @@ export default function PerCapitaMultiDonutChart({
     },
   };
 
+  const chartRef = useRef<any>(null);
+
+  const handleClick = useCallback((event: any) => {
+    const chart = chartRef.current;
+    if (!chart) return;
+    const elements = chart.getElementsAtEventForMode(event.nativeEvent, 'nearest', { intersect: true }, true);
+    if (!elements || elements.length === 0) return;
+    const elem = elements[0];
+    const datasetIndex = elem.datasetIndex;
+    const dataIndex = elem.index;
+    let label = "";
+    if (datasetIndex === 0) {
+      label = adminUnitLabels[dataIndex];
+    } else if (datasetIndex === 1) {
+      label = bureauLabels[dataIndex];
+    }
+    if (label) {
+      const id = slugify(label);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.classList.add("ring-4", "ring-blue-400");
+        setTimeout(() => el.classList.remove("ring-4", "ring-blue-400"), 1200);
+      }
+    }
+  }, [adminUnitLabels, bureauLabels]);
+
   return (
     <div className="w-full flex flex-col items-center min-h-[400px]">
       <div className="text-lg font-semibold mb-2 text-gray-900">
         Total Per Capita Spending: ${totalPerCapita.toLocaleString(undefined, { maximumFractionDigits: 2 })}
       </div>
-      <Doughnut data={data} options={options} />
+      <Doughnut ref={chartRef} data={data} options={options} onClick={handleClick} />
     </div>
   );
 } 
