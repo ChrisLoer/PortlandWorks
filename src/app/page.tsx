@@ -169,7 +169,9 @@ export default async function Home() {
               <div key={`${dept.id}-${idx}`} id={slugify(dept.name)} className="bg-white rounded-lg shadow p-4">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{dept.name}</h3>
                 <p className="text-gray-700 mb-2">{dept.description}</p>
-                
+                <div className="mb-2 text-sm text-gray-600">
+                  <span className="font-semibold text-gray-800">Administrative Unit:</span> {adminUnit.name}
+                </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   <div>
                     <span className="text-sm text-gray-700">Total Expense</span>
@@ -188,7 +190,6 @@ export default async function Home() {
                     <p className="text-lg font-medium text-gray-900">{(dept.allocation * 100).toFixed(1)}%</p>
                   </div>
                 </div>
-                
                 <div className="mb-2">
                   <span className="text-sm text-gray-700">Funding Sources:</span>
                   <div className="flex flex-wrap gap-1 mt-1">
@@ -199,7 +200,6 @@ export default async function Home() {
                     ))}
                   </div>
                 </div>
-                
                 {dept.children.length > 0 && (
                   <div className="mt-2">
                     <span className="text-sm text-gray-700">Sub-departments:</span>
@@ -215,13 +215,11 @@ export default async function Home() {
                     </ul>
                   </div>
                 )}
-                
                 {dept.notes && (
                   <div className="mt-2 text-sm text-gray-700 italic">
                     {dept.notes}
                   </div>
                 )}
-                
                 {dept.references && dept.references.length > 0 && (
                   <div className="mt-2 text-sm">
                     <span className="text-gray-700">References:</span>
@@ -234,6 +232,27 @@ export default async function Home() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+                )}
+                {dept.metrics && dept.metrics.length > 0 && (
+                  <div className="mt-2">
+                    <span className="text-sm text-gray-700 font-semibold">Metrics:</span>
+                    <table className="min-w-full mt-1 text-sm border rounded">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="px-2 py-1 text-left font-medium text-gray-700">Name</th>
+                          <th className="px-2 py-1 text-left font-medium text-gray-700">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dept.metrics.map((metric, i) => (
+                          <tr key={metric.id || i} className="border-t">
+                            <td className="px-2 py-1 text-gray-800">{metric.name}</td>
+                            <td className="px-2 py-1 text-gray-800">{metric.value}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
                 )}
               </div>

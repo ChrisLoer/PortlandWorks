@@ -35,6 +35,16 @@ export interface CPIData {
   annualData: CPIDataPoint[];
 }
 
+export interface BudgetMetric {
+  id?: string;
+  name: string;
+  value: string | number;
+  unit?: string;
+  category?: string;
+  description?: string;
+  source?: string;
+}
+
 export interface BudgetItem {
   id: string;
   name: string;
@@ -52,6 +62,7 @@ export interface BudgetItem {
   references: Reference[];
   allocation: number;
   description: string;
+  metrics?: BudgetMetric[];
 }
 
 export interface BudgetData {
