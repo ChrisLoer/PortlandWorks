@@ -1,6 +1,6 @@
 "use client";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, TooltipItem } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, TooltipItem, ChartDataset } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { BudgetItem, AdministrativeUnit } from "@/types/budget";
 import { useMemo, useCallback, useRef } from "react";
@@ -244,7 +244,7 @@ export default function PerCapitaMultiDonutChart({
       tooltip: {
         callbacks: {
           label: function (context: TooltipItem<'doughnut'>) {
-            const dataset = context.dataset as any;
+            const dataset = context.dataset as ChartDataset<'doughnut'> & { labels?: string[] };
             const label = dataset.labels ? dataset.labels[context.dataIndex] : context.label || '';
             const value = context.raw as number;
             return `${label}: $${value.toLocaleString(undefined, { maximumFractionDigits: 2 })} per capita`;
