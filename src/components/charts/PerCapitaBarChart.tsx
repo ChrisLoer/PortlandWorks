@@ -1,6 +1,6 @@
 'use client';
 
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, TooltipItem } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { BudgetItem, AdministrativeUnit, CPIData } from '@/types/budget';
 import { calculateAdjustedPerCapitaExpense, formatPerCapitaAmount } from '@/utils/budget-utils';
@@ -58,8 +58,8 @@ export default function PerCapitaBarChart({
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
-            const value = context.raw;
+          label: function(context: TooltipItem<'bar'>) {
+            const value = context.raw as number;
             return formatPerCapitaAmount(value);
           }
         }

@@ -1,8 +1,8 @@
 "use client";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Chart, TooltipItem } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { BudgetItem, AdministrativeUnit, CPIData } from "@/types/budget";
+import { BudgetItem, AdministrativeUnit } from "@/types/budget";
 import { useMemo, useCallback, useRef } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -18,7 +18,7 @@ const ADMIN_UNIT_COLORS = [
 ];
 
 function shadeColor(color: string, percent: number) {
-  let f = parseInt(color.slice(1), 16),
+  const f = parseInt(color.slice(1), 16),
     t = percent < 0 ? 0 : 255,
     p = percent < 0 ? percent * -1 : percent,
     R = f >> 16,
@@ -44,14 +44,12 @@ function slugify(str: string) {
 interface PerCapitaMultiDonutChartProps {
   departments: BudgetItem[];
   administrativeUnits: AdministrativeUnit[];
-  cpiData: CPIData;
   filter?: 'operating' | 'capital' | 'debt';
 }
 
 export default function PerCapitaMultiDonutChart({
   departments,
   administrativeUnits,
-  cpiData,
   filter,
 }: PerCapitaMultiDonutChartProps) {
   // Memoize data prep for performance
@@ -225,12 +223,14 @@ export default function PerCapitaMultiDonutChart({
         labels: {
           color: "rgb(55, 65, 81)",
           font: { size: 14 },
-          generateLabels: (chart: any) => {
+          generateLabels: (chart: Chart) => {
             const dataset = chart.data.datasets[0];
-            return chart.data.labels.map((label: string, i: number) => ({
-              text: label,
-              fillStyle: dataset.backgroundColor[i],
-              strokeStyle: dataset.backgroundColor[i],
+            const labels = chart.data.labels || [];
+            const colors = dataset.backgroundColor as string[];
+            return labels.map((label, i) => ({
+              text: String(label),
+              fillStyle: colors[i],
+              strokeStyle: colors[i],
               index: i,
             }));
           },
@@ -244,14 +244,13 @@ export default function PerCapitaMultiDonutChart({
       },
       tooltip: {
         callbacks: {
-          label: function (context: any) {
-            const dataset = context.dataset;
-            const labelArr = dataset.labels || [];
-            const label = labelArr[context.dataIndex] || context.label;
-            const value = context.raw;
+          label: function (context: TooltipItem<'doughnut'>) {
+            //const dataset = context.dataset as ChartDataset<'doughnut', number[]>;
+            const label = context.label || '';
+            const value = context.raw as number;
             return `${label}: $${value.toLocaleString(undefined, { maximumFractionDigits: 2 })} per capita`;
           },
-          title: function (context: any) {
+          title: function (context: TooltipItem<'doughnut'>[]) {
             const ctx = context[0];
             if (ctx.datasetIndex === 0) {
               // Inner ring: admin unit
@@ -275,9 +274,9 @@ export default function PerCapitaMultiDonutChart({
     },
   };
 
-  const chartRef = useRef<any>(null);
+  const chartRef = useRef<Chart<'doughnut'> | null>(null);
 
-  const handleClick = useCallback((event: any) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLCanvasElement, MouseEvent>) => {
     const chart = chartRef.current;
     if (!chart) return;
     const elements = chart.getElementsAtEventForMode(event.nativeEvent, 'nearest', { intersect: true }, true);

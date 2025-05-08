@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { BudgetItem, CPIData, BudgetData, AdministrativeUnitsData, SpendingFilter as SpendingFilterType } from '@/types/budget';
+import { BudgetItem, BudgetData, AdministrativeUnitsData, SpendingFilter as SpendingFilterType } from '@/types/budget';
 import PerCapitaMultiDonutChart from '@/components/charts/PerCapitaMultiDonutChart';
 import FundingSourcesChart from '@/components/charts/FundingSourcesChart';
 import BudgetBreakdownSelector from '@/components/BudgetBreakdownSelector';
@@ -12,8 +12,6 @@ interface MainContentProps {
   adminUnitsData: AdministrativeUnitsData;
   transformedDepartments: BudgetItem[];
   topLevelDepartments: BudgetItem[];
-  departmentsByAdminUnit: Record<string, BudgetItem[]>;
-  sampleCPIData: CPIData;
 }
 
 function slugify(str: string) {
@@ -24,9 +22,7 @@ export default function MainContent({
   budgetData, 
   adminUnitsData, 
   transformedDepartments, 
-  topLevelDepartments, 
-  departmentsByAdminUnit,
-  sampleCPIData 
+  topLevelDepartments
 }: MainContentProps) {
   const [spendingFilter, setSpendingFilter] = useState<SpendingFilterType>('all');
 
@@ -76,7 +72,6 @@ export default function MainContent({
           <PerCapitaMultiDonutChart 
             departments={filteredTopLevelDepartments}
             administrativeUnits={adminUnitsData.units}
-            cpiData={sampleCPIData}
             filter={spendingFilter === 'all' ? undefined : spendingFilter}
           />
         </div>

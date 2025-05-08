@@ -1,6 +1,6 @@
 'use client';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, TooltipItem } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { BudgetItem } from '@/types/budget';
 
@@ -78,9 +78,9 @@ export default function FundingSourcesChart({ departments, showOnlyTopLevel = tr
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'doughnut'>) => {
             const label = context.label || '';
-            const value = context.raw || 0;
+            const value = context.raw as number || 0;
             const total = fundingSourceCounts.reduce((acc, item) => acc + item.count, 0);
             const percentage = ((value / total) * 100).toFixed(1);
             return `${label}: ${value} departments (${percentage}%)`;

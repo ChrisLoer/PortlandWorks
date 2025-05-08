@@ -1,6 +1,6 @@
 'use client';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, TooltipItem, TooltipModel } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { BudgetItem, AdministrativeUnit } from '@/types/budget';
 
@@ -103,10 +103,10 @@ export default function BudgetBreakdownChart({
       },
       tooltip: {
         callbacks: {
-          label: function(context: any) {
-            const value = context.raw;
+          label: function(this: TooltipModel<'pie'>, tooltipItem: TooltipItem<'pie'>) {
+            const value = tooltipItem.raw as number;
             const percentage = ((value / totalBudget) * 100).toFixed(1);
-            return `${context.label}: $${(value / 1000000).toFixed(1)}M (${percentage}%)`;
+            return `${tooltipItem.label}: $${(value / 1000000).toFixed(1)}M (${percentage}%)`;
           }
         }
       }

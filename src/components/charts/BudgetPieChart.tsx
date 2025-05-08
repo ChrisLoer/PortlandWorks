@@ -1,6 +1,6 @@
 'use client';
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, TooltipItem } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import { BudgetItem } from '@/types/budget';
 
@@ -59,9 +59,9 @@ export default function BudgetPieChart({ departments, showOnlyTopLevel = true }:
       },
       tooltip: {
         callbacks: {
-          label: (context: any) => {
+          label: (context: TooltipItem<'pie'>) => {
             const label = context.label || '';
-            const value = context.raw || 0;
+            const value = context.raw as number || 0;
             const total = displayDepartments.reduce((acc, dept) => acc + dept.totalExpense, 0);
             const percentage = ((value / total) * 100).toFixed(1);
             return `${label}: $${(value / 1000000).toFixed(1)}M (${percentage}%)`;
