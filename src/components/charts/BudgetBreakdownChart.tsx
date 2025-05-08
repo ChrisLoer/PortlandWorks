@@ -15,15 +15,53 @@ export default function BudgetBreakdownChart({
   departments,
   administrativeUnit
 }: BudgetBreakdownChartProps) {
-  // Calculate total budget
-  const totalBudget = departments.reduce((sum, dept) => sum + dept.totalExpense, 0);
+  // Calculate total budget based on classification
+  const totalBudget = departments.reduce((sum, dept) => {
+    if (dept.classification === 'capital' && dept.capitalExpense) {
+      return sum + dept.capitalExpense;
+    }
+    if (dept.classification === 'operating' && dept.operatingExpense) {
+      return sum + dept.operatingExpense;
+    }
+    if (dept.classification === 'mixed') {
+      if (dept.capitalExpense && dept.operatingExpense) {
+        return sum + dept.capitalExpense + dept.operatingExpense;
+      }
+      if (dept.capitalExpense) {
+        return sum + dept.capitalExpense;
+      }
+      if (dept.operatingExpense) {
+        return sum + dept.operatingExpense;
+      }
+    }
+    return sum + dept.totalExpense;
+  }, 0);
   
   // Prepare data for the chart
   const data = {
     labels: departments.map(dept => dept.name),
     datasets: [
       {
-        data: departments.map(dept => dept.totalExpense),
+        data: departments.map(dept => {
+          if (dept.classification === 'capital' && dept.capitalExpense) {
+            return dept.capitalExpense;
+          }
+          if (dept.classification === 'operating' && dept.operatingExpense) {
+            return dept.operatingExpense;
+          }
+          if (dept.classification === 'mixed') {
+            if (dept.capitalExpense && dept.operatingExpense) {
+              return dept.capitalExpense + dept.operatingExpense;
+            }
+            if (dept.capitalExpense) {
+              return dept.capitalExpense;
+            }
+            if (dept.operatingExpense) {
+              return dept.operatingExpense;
+            }
+          }
+          return dept.totalExpense;
+        }),
         backgroundColor: [
           'rgba(255, 99, 132, 0.5)',
           'rgba(54, 162, 235, 0.5)',

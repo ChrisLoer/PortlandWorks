@@ -45,15 +45,27 @@ interface PerCapitaMultiDonutChartProps {
   departments: BudgetItem[];
   administrativeUnits: AdministrativeUnit[];
   cpiData: CPIData;
+  filter?: 'operating' | 'capital' | 'debt';
 }
 
 export default function PerCapitaMultiDonutChart({
   departments,
   administrativeUnits,
   cpiData,
+  filter,
 }: PerCapitaMultiDonutChartProps) {
   // Memoize data prep for performance
   const { adminUnitLabels, adminUnitData, adminUnitColors, bureauLabels, bureauData, bureauColors, bureauParents, totalPerCapita } = useMemo(() => {
+    // Debug logging
+    const departmentsWithoutClassification = departments.filter(dept => !dept.classification);
+    if (departmentsWithoutClassification.length > 0) {
+      console.log('Departments missing classification:', departmentsWithoutClassification.map(d => ({
+        name: d.name,
+        administrativeUnit: d.administrativeUnit,
+        totalExpense: d.totalExpense
+      })));
+    }
+
     // Build admin unit per-capita spending
     const adminUnitMap = administrativeUnits.map((unit, i) => {
       const bureaus = departments.filter((dept) => {
@@ -62,16 +74,102 @@ export default function PerCapitaMultiDonutChart({
         return dept.administrativeUnit.toLowerCase() === unit.name.toLowerCase();
       });
       const color = ADMIN_UNIT_COLORS[i % ADMIN_UNIT_COLORS.length];
-      const value = bureaus.reduce((sum, dept) => sum + dept.totalExpense / unit.population, 0);
+      const value = bureaus.reduce((sum, dept) => {
+        // If no filter, show all expenses
+        if (!filter) {
+          return sum + dept.totalExpense / unit.population;
+        }
+
+        // If classification matches filter, include full amount
+        if (dept.classification === filter) {
+          return sum + dept.totalExpense / unit.population;
+        }
+
+        // If classification is opposite of filter, exclude
+        if (filter === 'capital' && dept.classification === 'operating') return sum;
+        if (filter === 'operating' && dept.classification === 'capital') return sum;
+        if (filter === 'debt' && dept.classification !== 'debt') return sum;
+
+        // For mixed departments, calculate appropriate ratio
+        if (dept.classification === 'mixed' && filter !== 'debt') {
+          const total = (dept.capitalExpense || 0) + (dept.operatingExpense || 0);
+          if (total > 0) {
+            const ratio = filter === 'capital' 
+              ? (dept.capitalExpense || 0) / total
+              : (dept.operatingExpense || 0) / total;
+            return sum + (dept.totalExpense * ratio) / unit.population;
+          }
+        }
+
+        return sum;
+      }, 0);
       return {
         name: unit.name,
         value,
         color,
-        bureaus: bureaus.map((dept, j) => ({
-          name: dept.name,
-          value: dept.totalExpense / unit.population,
-          color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
-        })),
+        bureaus: bureaus.map((dept, j) => {
+          // If no filter, show all expenses
+          if (!filter) {
+            return {
+              name: dept.name,
+              value: dept.totalExpense / unit.population,
+              color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+            };
+          }
+
+          // If classification matches filter, include full amount
+          if (dept.classification === filter) {
+            return {
+              name: dept.name,
+              value: dept.totalExpense / unit.population,
+              color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+            };
+          }
+
+          // If classification is opposite of filter, exclude
+          if (filter === 'capital' && dept.classification === 'operating') {
+            return {
+              name: dept.name,
+              value: 0,
+              color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+            };
+          }
+          if (filter === 'operating' && dept.classification === 'capital') {
+            return {
+              name: dept.name,
+              value: 0,
+              color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+            };
+          }
+          if (filter === 'debt' && dept.classification !== 'debt') {
+            return {
+              name: dept.name,
+              value: 0,
+              color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+            };
+          }
+
+          // For mixed departments, calculate appropriate ratio
+          if (dept.classification === 'mixed' && filter !== 'debt') {
+            const total = (dept.capitalExpense || 0) + (dept.operatingExpense || 0);
+            if (total > 0) {
+              const ratio = filter === 'capital' 
+                ? (dept.capitalExpense || 0) / total
+                : (dept.operatingExpense || 0) / total;
+              return {
+                name: dept.name,
+                value: (dept.totalExpense * ratio) / unit.population,
+                color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+              };
+            }
+          }
+
+          return {
+            name: dept.name,
+            value: 0,
+            color: shadeColor(color, 0.4 + 0.2 * (j % 3)),
+          };
+        }),
       };
     }).filter(unit => unit.bureaus.length > 0);
     // Flatten bureaus for outer ring
@@ -94,7 +192,7 @@ export default function PerCapitaMultiDonutChart({
       bureauParents: bureauList.map((b) => b.parent),
       totalPerCapita,
     };
-  }, [departments, administrativeUnits]);
+  }, [departments, administrativeUnits, filter]);
 
   const data = {
     labels: adminUnitLabels,

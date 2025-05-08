@@ -45,6 +45,8 @@ export interface BudgetMetric {
   source?: string;
 }
 
+export type SpendingFilter = 'all' | 'capital' | 'operating' | 'debt';
+
 export interface BudgetItem {
   id: string;
   name: string;
@@ -63,6 +65,9 @@ export interface BudgetItem {
   allocation: number;
   description: string;
   metrics?: BudgetMetric[];
+  classification?: 'operating' | 'capital' | 'mixed' | 'debt';
+  operatingExpense?: number;
+  capitalExpense?: number;
 }
 
 export interface BudgetData {

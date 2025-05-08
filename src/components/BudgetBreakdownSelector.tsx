@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { AdministrativeUnit, BudgetItem } from '@/types/budget';
+import { AdministrativeUnit, BudgetItem, SpendingFilter } from '@/types/budget';
 import BudgetBreakdownChart from './charts/BudgetBreakdownChart';
+import SpendingFilterComponent from './SpendingFilter';
 
 interface BudgetBreakdownSelectorProps {
   administrativeUnits: AdministrativeUnit[];
@@ -14,6 +15,7 @@ export default function BudgetBreakdownSelector({
   departments
 }: BudgetBreakdownSelectorProps) {
   const [selectedUnitId, setSelectedUnitId] = useState<string>('');
+  const [spendingFilter, setSpendingFilter] = useState<SpendingFilter>('all');
 
   const selectedUnit = administrativeUnits.find(unit => unit.id === selectedUnitId);
   const selectedDepartments = selectedUnit
@@ -27,7 +29,19 @@ export default function BudgetBreakdownSelector({
           return true;
         }
         // Default case
-        return dept.administrativeUnit.toLowerCase() === selectedUnit.name.toLowerCase() && !dept.parentId;
+        const matchesUnit = dept.administrativeUnit.toLowerCase() === selectedUnit.name.toLowerCase() && !dept.parentId;
+        
+        // Apply spending filter
+        if (!matchesUnit) return false;
+        
+        switch (spendingFilter) {
+          case 'capital':
+            return dept.classification === 'capital' || (dept.classification === 'mixed' && dept.capitalExpense);
+          case 'operating':
+            return dept.classification === 'operating' || (dept.classification === 'mixed' && dept.operatingExpense);
+          default:
+            return true;
+        }
       })
     : [];
 
@@ -45,6 +59,13 @@ export default function BudgetBreakdownSelector({
           </option>
         ))}
       </select>
+      
+      {selectedUnit && (
+        <SpendingFilterComponent
+          value={spendingFilter}
+          onChange={setSpendingFilter}
+        />
+      )}
       
       {selectedUnit && selectedDepartments.length > 0 ? (
         <BudgetBreakdownChart 

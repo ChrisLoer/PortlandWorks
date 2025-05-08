@@ -1,0 +1,113 @@
+{
+  "lastUpdated": "2025-05-06",
+  "departments": [
+    { "id": "police-2024-25",             "classification": "operating", "operatingExpense": 295055810 },
+    { "id": "fire-2024-25",               "classification": "mixed",     "operatingExpense": 187209032, "capitalExpense":   6600000 },
+    { "id": "parks-2024-25",              "classification": "mixed",     "operatingExpense": 550300000, "capitalExpense":  57500000 },
+    { "id": "water-2024-25",              "classification": "mixed",     "operatingExpense": 1308486000,"capitalExpense": 486600000 },
+    { "id": "transportation-2024-25",     "classification": "operating", "operatingExpense": 180000000 },
+    { "id": "housing-2024-25",            "classification": "operating" },
+    { "id": "environmental-services-2024-25","classification": "mixed",  "notes": "Exact op/cap split not available", "operatingExpense": 70,"capitalExpense": 30  },
+    { "id": "civic-life-2024-25",         "classification": "operating" },
+    { "id": "permitting-development-2024-25","classification": "operating" },
+    { "id": "bps-2024-25",                "classification": "operating" },
+    { "id": "pcef-2024-25",               "classification": "operating" },
+    { "id": "omf-2024-25",                "classification": "operating" },
+    { "id": "boec-2024-25",               "classification": "operating" },
+    { "id": "pbem-2024-25",               "classification": "operating" },
+
+    { "id": "supportive-housing-2024-25", "classification": "operating" },
+    { "id": "affordable-housing-2024-25", "classification": "capital",   "capitalExpense": 362560310 },
+    { "id": "parks-nature-2024-25",       "classification": "mixed",     "operatingExpense":  42306014, "capitalExpense":  58000000 },
+    { "id": "zoo-2024-25",                "classification": "mixed",     "operatingExpense":  67280111, "capitalExpense":  11100000 },
+    { "id": "solid-waste-2024-25",        "classification": "mixed",     "operatingExpense": 137892000, "capitalExpense":  24333000,
+      "notes": "Capital ≈ 15 % of total (transfer‑station rebuild)" },
+    { "id": "merc-venues-2024-25",        "classification": "operating" },
+    { "id": "metro-general-fund-2024-25", "classification": "operating" },
+    { "id": "planning-development-2024-25","classification": "operating" },
+    { "id": "metro-debt-service-2024-25", "classification": "debt" },
+
+    { "id": "transportation-2024-25",     "classification": "mixed",     "operatingExpense": 322357557, "capitalExpense":  13550272 },
+    { "id": "maintenance-2024-25",        "classification": "mixed",     "operatingExpense": 185206853, "capitalExpense":  74546549 },
+    { "id": "safety-security-2024-25",    "classification": "mixed",     "operatingExpense":  79464672, "capitalExpense":   7014861 },
+    { "id": "it-2024-25",                 "classification": "mixed",     "operatingExpense":  35373178, "capitalExpense":  10887708 },
+    { "id": "finance-admin-2024-25",      "classification": "mixed",     "operatingExpense":  35954434, "capitalExpense":  12691287 },
+    { "id": "engineering-construction-2024-25","classification": "capital","operatingExpense":   4457595, "capitalExpense":  76807144 },
+    { "id": "public-affairs-2024-25",     "classification": "mixed",     "operatingExpense":  20100906, "capitalExpense":   1200000 },
+    { "id": "tsas-2024-25",               "classification": "operating" },
+    { "id": "hr-2024-25",                 "classification": "operating" },
+    { "id": "legal-2024-25",              "classification": "mixed",     "operatingExpense":  10147165, "capitalExpense":   1500000 },
+    { "id": "idea-2024-25",               "classification": "operating" },
+    { "id": "strategy-planning-2024-25",  "classification": "mixed",     "operatingExpense":   4797951, "capitalExpense":   1754409 },
+
+    { "id": "pps-instruction-2024-25",    "classification": "operating", "operatingExpense": 534305000 },
+    { "id": "pps-support-2024-25",        "classification": "operating", "operatingExpense": 452149000 },
+    { "id": "pps-enterprise-2024-25",     "classification": "operating", "operatingExpense":  33302000 },
+    { "id": "pps-facilities-2024-25",     "classification": "capital",   "capitalExpense": 1027836000 },
+    { "id": "pps-debt-2024-25",           "classification": "debt" },
+    {
+      "id": "multco-nondepartmental-2025",
+      "classification": "operating",
+      "operatingExpense": 236751899,
+      "notes": "Primarily general-fund contingency, dues, and county-wide pass-throughs; capital projects are budgeted in separate capital funds."
+    },
+    {
+      "id": "multco-da-2025",
+      "classification": "operating",
+      "operatingExpense": 54623462
+    },
+    {
+      "id": "multco-humansvcs-2025",
+      "classification": "operating",
+      "operatingExpense": 371844534
+    },
+    {
+      "id": "multco-johs-2025",
+      "name": "Joint Office of Homeless Services",
+      "classification": "operating",
+      "operatingExpense": 342490107
+    },
+    {
+      "id": "multco-health-2025",
+      "classification": "operating",
+      "operatingExpense": 545465024
+    },
+    {
+      "id": "multco-communityjustice-2025",
+      "classification": "operating",
+      "operatingExpense": 119704797
+    },
+    {
+      "id": "multco-sheriff-2025",
+      "classification": "operating",
+      "operatingExpense": 210052294
+    },
+    {
+      "id": "multco-management-2025",
+      "classification": "operating",
+      "operatingExpense": 264818952
+    },
+    {
+      "id": "multco-assets-2025",
+      "classification": "mixed",
+      "totalExpense": 606444749,
+      "notes": "Department blends internal-service operations (facilities, fleet, IT) with capital‐improvement projects; FY 25 capital share not broken out in the adopted volume."
+    },
+    {
+      "id": "multco-library-2025",
+      "classification": "operating",
+      "operatingExpense": 118707915,
+      "notes": "Operating transfer from the Library District; capital projects live in the separate bond fund."
+    },
+    {
+      "id": "multco-communityservices-2025",
+      "classification": "operating",
+      "operatingExpense": 189755360
+    },
+    {
+      "id": "library-capital-bond-2025",
+      "classification": "capital",
+      "capitalExpense": 253425980
+    }
+  ]
+}
