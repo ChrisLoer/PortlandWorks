@@ -1,9 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { AdministrativeUnit, BudgetItem, SpendingFilter } from '@/types/budget';
+import { AdministrativeUnit, BudgetItem } from '@/types/budget';
 import BudgetBreakdownChart from './charts/BudgetBreakdownChart';
-import SpendingFilterComponent from './SpendingFilter';
 
 interface BudgetBreakdownSelectorProps {
   administrativeUnits: AdministrativeUnit[];
@@ -15,7 +14,6 @@ export default function BudgetBreakdownSelector({
   departments
 }: BudgetBreakdownSelectorProps) {
   const [selectedUnitId, setSelectedUnitId] = useState<string>('');
-  const [spendingFilter, setSpendingFilter] = useState<SpendingFilter>('all');
 
   const selectedUnit = administrativeUnits.find(unit => unit.id === selectedUnitId);
   const selectedDepartments = selectedUnit
@@ -29,21 +27,31 @@ export default function BudgetBreakdownSelector({
           return true;
         }
         // Default case
-        const matchesUnit = dept.administrativeUnit.toLowerCase() === selectedUnit.name.toLowerCase() && !dept.parentId;
-        
-        // Apply spending filter
-        if (!matchesUnit) return false;
-        
-        switch (spendingFilter) {
-          case 'capital':
-            return dept.classification === 'capital' || (dept.classification === 'mixed' && dept.capitalExpense);
-          case 'operating':
-            return dept.classification === 'operating' || (dept.classification === 'mixed' && dept.operatingExpense);
-          default:
-            return true;
-        }
+        return dept.administrativeUnit.toLowerCase() === selectedUnit.name.toLowerCase() && !dept.parentId;
       })
     : [];
+
+  // Calculate total spending for selected departments
+  const totalSpending = selectedDepartments.reduce((sum, dept) => {
+    if (dept.classification === 'capital' && dept.capitalExpense) {
+      return sum + dept.capitalExpense;
+    }
+    if (dept.classification === 'operating' && dept.operatingExpense) {
+      return sum + dept.operatingExpense;
+    }
+    if (dept.classification === 'mixed') {
+      if (dept.capitalExpense && dept.operatingExpense) {
+        return sum + dept.capitalExpense + dept.operatingExpense;
+      }
+      if (dept.capitalExpense) {
+        return sum + dept.capitalExpense;
+      }
+      if (dept.operatingExpense) {
+        return sum + dept.operatingExpense;
+      }
+    }
+    return sum + dept.totalExpense;
+  }, 0);
 
   return (
     <div>
@@ -61,10 +69,9 @@ export default function BudgetBreakdownSelector({
       </select>
       
       {selectedUnit && (
-        <SpendingFilterComponent
-          value={spendingFilter}
-          onChange={setSpendingFilter}
-        />
+        <div className="text-lg font-semibold mb-2 text-gray-900 text-center">
+          Total Spending: ${totalSpending.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+        </div>
       )}
       
       {selectedUnit && selectedDepartments.length > 0 ? (
