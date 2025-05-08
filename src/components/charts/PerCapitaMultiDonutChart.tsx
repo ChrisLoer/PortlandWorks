@@ -193,7 +193,6 @@ export default function PerCapitaMultiDonutChart({
   }, [departments, administrativeUnits, filter]);
 
   const data = {
-    labels: adminUnitLabels,
     datasets: [
       {
         label: "Admin Units",
@@ -245,8 +244,8 @@ export default function PerCapitaMultiDonutChart({
       tooltip: {
         callbacks: {
           label: function (context: TooltipItem<'doughnut'>) {
-            //const dataset = context.dataset as ChartDataset<'doughnut', number[]>;
-            const label = context.label || '';
+            const dataset = context.dataset as any;
+            const label = dataset.labels ? dataset.labels[context.dataIndex] : context.label || '';
             const value = context.raw as number;
             return `${label}: $${value.toLocaleString(undefined, { maximumFractionDigits: 2 })} per capita`;
           },
