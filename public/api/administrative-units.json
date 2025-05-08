@@ -1,0 +1,112 @@
+{
+  "lastUpdated": "2024-04-09",
+  "dataSource": "U.S. Census Bureau",
+  "dataSourceUrl": "https://www.census.gov/",
+  "units": [
+    {
+      "id": "portland-city",
+      "name": "Portland",
+      "type": "City",
+      "state": "Oregon",
+      "population": 635000,
+      "year": 2024,
+      "notes": "Estimated population for 2024",
+      "references": [
+        {
+          "title": "Portland Population Estimates",
+          "url": "https://www.census.gov/quickfacts/portlandcityoregon"
+        }
+      ]
+    },
+    {
+      "id": "multnomah-county",
+      "name": "Multnomah County",
+      "type": "County",
+      "state": "Oregon",
+      "population": 815000,
+      "year": 2024,
+      "notes": "Estimated population for 2024",
+      "references": [
+        {
+          "title": "Multnomah County Population Estimates",
+          "url": "https://www.census.gov/quickfacts/multnomahcountyoregon"
+        }
+      ]
+    },
+    {
+      "id": "portland-metro",
+      "name": "Portland Metro",
+      "type": "Metro",
+      "state": "Oregon",
+      "population": 1800000,
+      "year": 2024,
+      "notes": "Portland-Vancouver-Hillsboro, OR-WA Metro Area",
+      "references": [
+        {
+          "title": "Portland Metro Population Estimates",
+          "url": "https://www.census.gov/quickfacts/portlandvancouverhillsborometropolitanstatisticalarea"
+        }
+      ]
+    },
+    {
+      "id": "trimet-district",
+      "name": "TriMet",
+      "type": "Transit Agency",
+      "state": "Oregon",
+      "population": 1800000,
+      "year": 2024,
+      "notes": "Tri-County Metropolitan Transportation District of Oregon (serves Multnomah, Washington, and Clackamas counties)",
+      "references": [
+        {
+          "title": "TriMet Service District Area",
+          "url": "https://trimet.org/about/service.htm"
+        }
+      ]
+    },
+    {
+      "id": "seattle-city",
+      "name": "Seattle",
+      "type": "City",
+      "state": "Washington",
+      "population": 750000,
+      "year": 2024,
+      "notes": "Estimated population for 2024",
+      "references": [
+        {
+          "title": "Seattle Population Estimates",
+          "url": "https://www.census.gov/quickfacts/seattlecitywashington"
+        }
+      ]
+    },
+    {
+      "id": "seattle-metro",
+      "name": "Seattle Metro",
+      "type": "Metro",
+      "state": "Washington",
+      "population": 4000000,
+      "year": 2024,
+      "notes": "Seattle-Tacoma-Bellevue, WA Metro Area",
+      "references": [
+        {
+          "title": "Seattle Metro Population Estimates",
+          "url": "https://www.census.gov/quickfacts/seattletacomabellevuemetropolitanstatisticalarea"
+        }
+      ]
+    },
+    {
+      "id": "pps-district",
+      "name": "Portland Public Schools",
+      "type": "School District",
+      "state": "Oregon",
+      "population": 600000,
+      "year": 2024,
+      "notes": "Estimated PK‑12 enrollment for 2024‑25",
+      "references": [
+        {
+          "title": "PPS Enrollment Forecast 2024‑25",
+          "url": "https://www.pps.net/Page/208"
+        }
+      ]
+    }
+  ]
+} 

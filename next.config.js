@@ -5,6 +5,7 @@ const nextConfig = {
     unoptimized: true,
   },
   basePath: process.env.NODE_ENV === 'production' ? '/portland_works' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/portland_works' : '',
 };
 
 module.exports = nextConfig; 

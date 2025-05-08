@@ -1,0 +1,1649 @@
+{
+  "fiscalYear": "2024-25",
+  "lastUpdated": "2025-05-08",
+  "dataSource": "Combined Budget Data",
+  "dataSourceUrl": "",
+  "departments": [
+    {
+      "id": "affordable-housing-2024-25",
+      "name": "Affordable Housing Bond Program",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 362560310,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Affordable Housing GO Bond"
+      ],
+      "notes": "$652.8 M bond approved in 2018; over 4,700 units in pipeline.",
+      "allocation": 0.173,
+      "description": "Creation of permanently affordable homes across the region",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Staffing within Housing Department",
+          "source": "Metro budget"
+        },
+        {
+          "id": "affordable-units-pipeline",
+          "name": "Affordable Units Pipeline",
+          "value": 4700,
+          "unit": "count",
+          "category": "housing",
+          "description": "Units completed or in pipeline funded by 2018 affordable housing bond",
+          "source": "Metro housing bond progress"
+        }
+      ]
+    },
+    {
+      "id": "boec-2024-25",
+      "name": "Emergency Communications",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 40125433,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "911 Excise Tax",
+        "Intergovernmental Revenues"
+      ],
+      "notes": "Countywide 9‑1‑1 call‑taking and dispatch services.",
+      "allocation": 0.005,
+      "description": "9‑1‑1 call answering and dispatch",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 169.9,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        },
+        {
+          "id": "emergency-911-calls",
+          "name": "Emergency 9‑1‑1 Calls",
+          "value": 700000,
+          "unit": "count",
+          "category": "workload",
+          "description": "Total emergency 9‑1‑1 telephone calls (target FY 24‑25)",
+          "source": "BOEC Performance Measures"
+        }
+      ]
+    },
+    {
+      "id": "bps-2024-25",
+      "name": "Planning & Sustainability",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 692123396,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Community & Economic Development",
+      "parentId": null,
+      "children": [
+        "pcef-2024-25"
+      ],
+      "fundingSources": [
+        "General Fund",
+        "Solid Waste Management Fund",
+        "PCEF",
+        "Grants",
+        "Fees"
+      ],
+      "notes": "Includes Portland Clean Energy Fund and Graffiti Abatement programs.",
+      "allocation": 0.084,
+      "description": "Citywide planning, climate, sustainability, and franchise utility regulation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 150.8,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "civic-life-2024-25",
+      "name": "Community & Civic Life",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 6320088,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund"
+      ],
+      "notes": "Community engagement and civic participation programs.",
+      "allocation": 0.0008,
+      "description": "Community engagement and outreach",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 14.9,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized FTE in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "engineering-construction-2024-25",
+      "name": "Engineering & Construction",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 81264739,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $4.5 M; CIP: $76.8 M.",
+      "allocation": 0.044,
+      "description": "Engineering & Construction division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 92,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "environmental-services-2024-25",
+      "name": "Environmental Services",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 1655524901,
+      "totalRevenue": 1655524901,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Sewer & Stormwater Rates",
+        "Bond Proceeds",
+        "System Development Charges"
+      ],
+      "notes": "Wastewater and stormwater infrastructure operations and capital program.",
+      "allocation": 0.2,
+      "description": "Wastewater and stormwater services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 671,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "finance-admin-2024-25",
+      "name": "Finance & Administrative Services",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 48645721,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $36.0 M; CIP: $12.7 M.",
+      "allocation": 0.026,
+      "description": "Finance & Administrative Services division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 166.3,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "fire-2024-25",
+      "name": "Fire & Rescue",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 193809032,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Capital Grants"
+      ],
+      "notes": "Includes $6.6 M in capital outlay for apparatus and station improvements.",
+      "allocation": 0.023,
+      "description": "Portland Fire & Rescue budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 768,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "total-incidents",
+          "name": "Total Incidents",
+          "value": 88761,
+          "unit": "count",
+          "category": "workload",
+          "description": "Total number of incidents responded to (all hazards)",
+          "source": "Emergency Operations performance measures"
+        }
+      ]
+    },
+    {
+      "id": "housing-2024-25",
+      "name": "Housing",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 307964874,
+      "totalRevenue": 20000000,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Housing Bond",
+        "Federal Grants",
+        "General Fund"
+      ],
+      "notes": "Affordable housing initiatives and homelessness services.",
+      "allocation": 0.037,
+      "description": "Affordable housing initiatives and programs",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 87,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        },
+        {
+          "id": "households-home-repairs",
+          "name": "Households Receiving Home Repairs",
+          "value": 500,
+          "unit": "count",
+          "category": "service",
+          "description": "Strategic target for home repair services",
+          "source": "Homeowner Access & Retention performance metrics"
+        }
+      ]
+    },
+    {
+      "id": "hr-2024-25",
+      "name": "Labor Relations & Human Resources",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 11475579,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $11.5 M; CIP: $0.0 M.",
+      "allocation": 0.006,
+      "description": "Labor Relations & Human Resources division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 54.8,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "idea-2024-25",
+      "name": "Inclusion, Diversity, Equity & Accessibility",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 2839974,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Equity",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $2.8 M; CIP: $0.0 M.",
+      "allocation": 0.002,
+      "description": "Inclusion, Diversity, Equity & Accessibility division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 13,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "it-2024-25",
+      "name": "Information Technology",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 46260886,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $35.4 M; CIP: $10.9 M.",
+      "allocation": 0.025,
+      "description": "Information Technology division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 112,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "legal-2024-25",
+      "name": "Legal Services",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 11647165,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $10.1 M; CIP: $1.5 M.",
+      "allocation": 0.006,
+      "description": "Legal Services division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 24,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "maintenance-2024-25",
+      "name": "Maintenance",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 259753402,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Operations",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $185.2 M; CIP: $74.5 M.",
+      "allocation": 0.141,
+      "description": "Maintenance division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 912,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "merc-venues-2024-25",
+      "name": "MERC Visitor Venues",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 112740294,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Visitor Venues",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Transient Lodging Tax",
+        "Sales & Admissions",
+        "Food & Beverage"
+      ],
+      "notes": "Oregon Convention Center, Portland’5 Centers for the Arts, Expo Center.",
+      "allocation": 0.054,
+      "description": "Convention & performing arts venues operations",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Part of visitor venues total",
+          "source": "Metro MERC"
+        },
+        {
+          "id": "transient-lodging-tax",
+          "name": "Transient Lodging Tax Revenue",
+          "value": 21354530,
+          "unit": "USD",
+          "category": "revenue",
+          "description": "FY 25 budgeted TLT revenue for MERC venues",
+          "source": "Metro visitor venues"
+        }
+      ]
+    },
+    {
+      "id": "metro-debt-service-2024-25",
+      "name": "Debt Service",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 92662993,
+      "totalRevenue": 92662993,
+      "year": 2024,
+      "grouping": "Debt Service",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Property Taxes",
+        "Bond Proceeds"
+      ],
+      "notes": "Payments on bonds for Affordable Housing, Natural Areas, Zoo, Convention Center, Expo.",
+      "allocation": 0.044,
+      "description": "Principal and interest payments on Metro general obligation bonds",
+      "metrics": []
+    },
+    {
+      "id": "metro-general-fund-2024-25",
+      "name": "General Fund – Central Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 220000000,
+      "totalRevenue": 220000000,
+      "year": 2024,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Property Taxes",
+        "Excise Taxes",
+        "Intergovernmental Revenues"
+      ],
+      "notes": "Funds central administrative functions plus Planning, Development & Research. Transfers to Zoo and Parks.",
+      "allocation": 0.105,
+      "description": "Central administrative and general government services",
+      "metrics": []
+    },
+    {
+      "id": "multco-nondepartmental-2025",
+      "name": "Nondepartmental",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 236751899,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.077,
+      "description": "Nondepartmental budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 146.3,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-da-2025",
+      "name": "District Attorney",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 54623462,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.018,
+      "description": "District Attorney budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 235.9,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-humansvcs-2025",
+      "name": "County Human Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 371844534,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Human Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.121,
+      "description": "County Human Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 990,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-johs-2025",
+      "name": "Joint Office of Homeless Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 342490107,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.112,
+      "description": "Joint Office of Homeless Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 122,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-health-2025",
+      "name": "Health Department",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 545465024,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Health",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.178,
+      "description": "Health Department budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1696.31,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-communityjustice-2025",
+      "name": "Community Justice",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 119704797,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.039,
+      "description": "Community Justice budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 466.1,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-sheriff-2025",
+      "name": "Sheriff's Office",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 210052294,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.069,
+      "description": "Sheriff's Office budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 819.57,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-management-2025",
+      "name": "County Management",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 264818952,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.087,
+      "description": "County Management budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 312,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-assets-2025",
+      "name": "County Assets",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 606444749,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.198,
+      "description": "County Assets budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 406.5,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-library-2025",
+      "name": "Library",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 118707915,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Libraries & Culture",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.039,
+      "description": "Library budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 539.25,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "multco-communityservices-2025",
+      "name": "Community Services",
+      "administrativeUnit": "Multnomah County",
+      "countyName": "Multnomah",
+      "totalExpense": 189755360,
+      "totalRevenue": 0,
+      "year": 2025,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [],
+      "notes": "",
+      "references": [],
+      "allocation": 0.062,
+      "description": "Community Services budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 234,
+          "unit": "FTE",
+          "category": "personnel",
+          "description": "Authorized full-time equivalent positions for FY 2025",
+          "source": "FY 2025 Adopted Budget"
+        }
+      ]
+    },
+    {
+      "id": "omf-2024-25",
+      "name": "Office of Management & Finance",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 248861099,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "General Government",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Internal Service Charges",
+        "General Fund",
+        "Debt Proceeds",
+        "Risk Premiums"
+      ],
+      "notes": "Provides centralized finance, revenue, risk, HR, tech, and CAO services.",
+      "allocation": 0.03,
+      "description": "Central administrative and support services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 254.5,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "parks-2024-25",
+      "name": "Parks & Recreation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 607790136,
+      "totalRevenue": 15000000,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "2020 Parks Local Option Levy",
+        "Fees & Charges",
+        "Grants"
+      ],
+      "notes": "Capital program is $57.5 M; operating is $550.3 M.",
+      "allocation": 0.073,
+      "description": "Parks maintenance, recreation programs, natural‑area stewardship",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 836,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "park-acres",
+          "name": "Park Acres",
+          "value": 12000,
+          "unit": "acres",
+          "category": "facilities",
+          "description": "Total acres of park land managed",
+          "source": "PP&R Bureau Overview"
+        }
+      ]
+    },
+    {
+      "id": "parks-nature-2024-25",
+      "name": "Parks & Nature",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 42306014,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Environment",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Local Option Levy",
+        "General Fund Transfer",
+        "Bond Proceeds"
+      ],
+      "notes": "Protects natural areas and manages regional parks and trails.",
+      "allocation": 0.02,
+      "description": "Regional parks, trails, natural areas stewardship",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "FTE includes 7.5 additions in FY25",
+          "source": "Metro Parks & Nature budget"
+        },
+        {
+          "id": "bond-capital-spend",
+          "name": "Bond Capital Spend",
+          "value": 58000000,
+          "unit": "USD",
+          "category": "capital",
+          "description": "FY 25 capital spend from 2019 Parks & Nature bond",
+          "source": "Metro budget Parks section"
+        }
+      ]
+    },
+    {
+      "id": "pbem-2024-25",
+      "name": "Emergency Management",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 9566649,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Grants"
+      ],
+      "notes": "Citywide emergency preparedness, planning, and resilience.",
+      "allocation": 0.0012,
+      "description": "Emergency management and preparedness",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 20.9,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "pcef-2024-25",
+      "name": "Portland Clean Energy Fund",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 144593938,
+      "totalRevenue": 144593938,
+      "year": 2024,
+      "grouping": "Environment",
+      "parentId": "bps-2024-25",
+      "children": [],
+      "fundingSources": [
+        "1% Tax on Large Retailers"
+      ],
+      "notes": "Voter‑approved climate initiative, funds grants for clean energy and green jobs.",
+      "allocation": 0.017,
+      "description": "Climate and environmental justice grant program",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 39.5,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized FTE for PCEF program",
+          "source": "Program FTE table"
+        }
+      ]
+    },
+    {
+      "id": "permitting-development-2024-25",
+      "name": "Portland Permitting & Development",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 104021927,
+      "totalRevenue": 104021927,
+      "year": 2024,
+      "grouping": "Community & Economic Development",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Permitting Fees & Charges"
+      ],
+      "notes": "Building permits, inspections, and land use services.",
+      "allocation": 0.013,
+      "description": "Permitting, inspections, and development review",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 351.9,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Authorized Positions table"
+        }
+      ]
+    },
+    {
+      "id": "planning-development-2024-25",
+      "name": "Planning, Development & Research",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 15893681,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Planning",
+      "parentId": "metro-general-fund-2024-25",
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Federal Grants",
+        "State Grants"
+      ],
+      "notes": "Regional land use and transportation planning, research and data.",
+      "allocation": 0.0076,
+      "description": "Regional land use and transportation planning",
+      "metrics": []
+    },
+    {
+      "id": "police-2024-25",
+      "name": "Police",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 295055810,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "General Fund",
+        "Grants Fund",
+        "Police Special Revenue Fund"
+      ],
+      "notes": "Adopted operating budget only; no capital projects in FY 24‑25.",
+      "allocation": 0.036,
+      "description": "Portland Police Bureau budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1224,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "average-travel-time-high-priority",
+          "name": "Avg Travel Time – High Priority Calls",
+          "value": 8.02,
+          "unit": "minutes",
+          "category": "performance",
+          "description": "Average travel time to high priority dispatched calls",
+          "source": "Precinct Patrol performance measures"
+        }
+      ]
+    },
+    {
+      "id": "pps-debt-2024-25",
+      "name": "Debt Service",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 262135000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Debt Service",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "GO bond and pension obligation debt service payments.",
+      "allocation": 0.11,
+      "description": "Debt Service functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 0,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    },
+    {
+      "id": "pps-enterprise-2024-25",
+      "name": "Enterprise & Community Services",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 33302000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Community Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Nutrition, community programs, and fee‑supported services.",
+      "allocation": 0.014,
+      "description": "Enterprise & Community Services functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 230.27,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    },
+    {
+      "id": "pps-facilities-2024-25",
+      "name": "Facilities Acquisition & Construction",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 1027836000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Facilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Capital projects funded primarily by voter‑approved bonds.",
+      "allocation": 0.43,
+      "description": "Facilities Acquisition & Construction functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 43.5,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    },
+    {
+      "id": "pps-instruction-2024-25",
+      "name": "Instruction",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 534305000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Instruction",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Classroom instruction and related activities.",
+      "allocation": 0.224,
+      "description": "Instruction functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 3345.75,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    },
+    {
+      "id": "pps-support-2024-25",
+      "name": "Support Services",
+      "administrativeUnit": "Portland Public Schools",
+      "cityName": "Portland",
+      "totalExpense": 452149000,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "State School Fund",
+        "Property Taxes",
+        "Local Option Levy",
+        "Grants",
+        "Bonds"
+      ],
+      "notes": "Student support, central services, and administration.",
+      "allocation": 0.189,
+      "description": "Support Services functional spending",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 2375.6,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Authorized full‑time equivalent positions",
+          "source": "Summary of Requirements by Major Function table"
+        }
+      ]
+    },
+    {
+      "id": "public-affairs-2024-25",
+      "name": "Public Affairs",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 21300906,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Communications",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $20.1 M; CIP: $1.2 M.",
+      "allocation": 0.012,
+      "description": "Public Affairs division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 107,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "safety-security-2024-25",
+      "name": "Safety & Security",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 86479533,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Public Safety",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $79.5 M; CIP: $7.0 M.",
+      "allocation": 0.047,
+      "description": "Safety & Security division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 95,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "solid-waste-2024-25",
+      "name": "Waste Prevention & Environmental Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 162225478,
+      "totalRevenue": 162225478,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Solid Waste Tip Fees"
+      ],
+      "notes": "Operates regional transfer stations, recycling, and waste reduction programs.",
+      "allocation": 0.077,
+      "description": "Solid waste disposal and waste reduction services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 201.3,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total FTE in Waste Prevention & Environmental Services",
+          "source": "Metro WPES section"
+        },
+        {
+          "id": "tip-fee-increase",
+          "name": "Tip Fee Increase",
+          "value": 11.9,
+          "unit": "percent",
+          "category": "policy",
+          "description": "FY 25 tip fee increase under new cost recovery model",
+          "source": "Metro WPES section"
+        }
+      ]
+    },
+    {
+      "id": "strategy-planning-2024-25",
+      "name": "Strategy & Planning",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 6552360,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Planning",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $4.8 M; CIP: $1.8 M.",
+      "allocation": 0.004,
+      "description": "Strategy & Planning division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 20,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "supportive-housing-2024-25",
+      "name": "Supportive Housing Services",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 807598166,
+      "totalRevenue": 807598166,
+      "year": 2024,
+      "grouping": "Housing & Homelessness",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Personal & Business Income Tax"
+      ],
+      "notes": "Fourth year of ten‑year program funded by regional income taxes.",
+      "allocation": 0.386,
+      "description": "Regional supportive housing and homelessness services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Housing Department FTE rolled into Metro total; program staffing included in counties.",
+          "source": "Metro budget FTE table"
+        },
+        {
+          "id": "households-stabilized",
+          "name": "Households Stabilized",
+          "value": 6000,
+          "unit": "count",
+          "category": "service",
+          "description": "Households stabilized to date under SHS program",
+          "source": "Metro Housing progress"
+        }
+      ]
+    },
+    {
+      "id": "transportation-2024-25",
+      "name": "Transportation",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 335907829,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Operations",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $322.4 M; CIP: $13.6 M.",
+      "allocation": 0.183,
+      "description": "Transportation division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1870.5,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "transportation-2024-25",
+      "name": "Transportation",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 433600000,
+      "totalRevenue": 30000000,
+      "year": 2024,
+      "grouping": "Infrastructure",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Gas Tax",
+        "Parking Revenues",
+        "Federal/State Grants",
+        "General Transportation Revenue"
+      ],
+      "notes": "Operating budget only; PBOT capital projects appear in separate Transportation Operating Fund table.",
+      "allocation": 0.052,
+      "description": "Streets, signals, active‑transportation and planning services",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 1044,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        }
+      ]
+    },
+    {
+      "id": "tsas-2024-25",
+      "name": "Transit System & Asset Support",
+      "administrativeUnit": "TriMet",
+      "cityName": "Portland Metro",
+      "totalExpense": 20711290,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Support Services",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Payroll Tax",
+        "Passenger Fares",
+        "Federal Grants",
+        "State/Local Grants"
+      ],
+      "notes": "Operating: $20.7 M; CIP: $0.0 M.",
+      "allocation": 0.011,
+      "description": "Transit System & Asset Support division budget allocation",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 133,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Budget Organization Chart"
+        }
+      ]
+    },
+    {
+      "id": "water-2024-25",
+      "name": "Water Bureau",
+      "administrativeUnit": "City",
+      "cityName": "Portland",
+      "totalExpense": 1795011173,
+      "totalRevenue": 1795011173,
+      "year": 2024,
+      "grouping": "Utilities",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Water Rates",
+        "System Development Charges",
+        "Bond Proceeds"
+      ],
+      "notes": "Large increase reflects $484.5 M for Bull Run Filtration construction.",
+      "allocation": 0.217,
+      "description": "Water utility operations and capital improvements",
+      "metrics": [
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": 659,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Total authorized full‑time equivalent positions in FY 2024‑25",
+          "source": "Summary of Authorized Positions Table 8"
+        },
+        {
+          "id": "domestic-services",
+          "name": "Domestic Services",
+          "value": 179000,
+          "unit": "count",
+          "category": "infrastructure",
+          "description": "Number of domestic water service connections",
+          "source": "Distribution Services program description"
+        }
+      ]
+    },
+    {
+      "id": "zoo-2024-25",
+      "name": "Oregon Zoo",
+      "administrativeUnit": "Metro",
+      "cityName": "Portland Metro",
+      "totalExpense": 78280111,
+      "totalRevenue": 0,
+      "year": 2024,
+      "grouping": "Visitor Venues",
+      "parentId": null,
+      "children": [],
+      "fundingSources": [
+        "Admissions",
+        "General Fund Transfer",
+        "Grants",
+        "Food & Merchandise"
+      ],
+      "notes": "Assumes modest attendance recovery; includes $11.1 M capital funding.",
+      "allocation": 0.037,
+      "description": "Regional zoo operations and conservation education",
+      "metrics": [
+        {
+          "id": "attendance",
+          "name": "Projected Attendance",
+          "value": 1300000,
+          "unit": "count",
+          "category": "usage",
+          "description": "Projected zoo visitors for FY 24‑25 (~87% of pre‑pandemic)",
+          "source": "Metro Zoo section"
+        },
+        {
+          "id": "authorized-fte",
+          "name": "Authorized FTE",
+          "value": null,
+          "unit": "count",
+          "category": "personnel",
+          "description": "Part of visitor venues staffing",
+          "source": "Metro visitor venues"
+        }
+      ]
+    }
+  ]
+}

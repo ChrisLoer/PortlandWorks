@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "generate-budget-data": "node scripts/generate-budget-data.js",
+    "prebuild": "npm run generate-budget-data",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
