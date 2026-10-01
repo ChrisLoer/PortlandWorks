@@ -1,10 +1,9 @@
-import { BudgetItem, BudgetData, AdministrativeUnitsData } from '@/types/budget';
+import { BudgetItem, BudgetData, AdministrativeUnitsData, FunctionalCategoryId } from '@/types/budget';
 import { promises as fs } from 'fs';
 import path from 'path';
 import MainContent from '@/components/MainContent';
 
 export const dynamic = 'force-static';
-
 
 async function getAdministrativeUnits(): Promise<AdministrativeUnitsData> {
   try {
@@ -43,24 +42,26 @@ export default async function Home() {
   const [budgetData, adminUnitsData, capitalVsOperatingData] = await Promise.all([
     getBudgetData(),
     getAdministrativeUnits(),
-    getCapitalVsOperatingData()
+    getCapitalVsOperatingData(),
   ]);
-  
+
   // Transform the departments to match the BudgetItem type and merge with capital/operating data
   const transformedDepartments: BudgetItem[] = budgetData.departments.map((dept: BudgetItem) => {
     const capitalVsOperating = capitalVsOperatingData.departments.find(
-      (d: { id: string; classification?: string; operatingExpense?: number; capitalExpense?: number }) => d.id === dept.id
+      (d: { id: string; classification?: string; operatingExpense?: number; capitalExpense?: number; functionalCategory?: string; authorizedFte?: number }) => d.id === dept.id
     );
-    
+
     return {
       ...dept,
-      administrativeUnitId: dept.administrativeUnit.toLowerCase().replace(/\s+/g, '-'),
-      classification: capitalVsOperating?.classification,
-      operatingExpense: capitalVsOperating?.operatingExpense,
-      capitalExpense: capitalVsOperating?.capitalExpense
+      administrativeUnitId: dept.administrativeUnitId || (dept.administrativeUnit ? dept.administrativeUnit.toLowerCase().replace(/\s+/g, '-') : 'city'),
+      functionalCategory: dept.functionalCategory || (capitalVsOperating?.functionalCategory as FunctionalCategoryId) || 'governance-support',
+      authorizedFte: dept.authorizedFte !== undefined ? dept.authorizedFte : capitalVsOperating?.authorizedFte,
+      classification: dept.classification || capitalVsOperating?.classification || 'operating',
+      operatingExpense: dept.operatingExpense !== undefined ? dept.operatingExpense : capitalVsOperating?.operatingExpense,
+      capitalExpense: dept.capitalExpense !== undefined ? dept.capitalExpense : capitalVsOperating?.capitalExpense,
     };
   });
-  
+
   // Get top-level departments only
   const topLevelDepartments = transformedDepartments.filter(dept => dept.parentId === null);
 

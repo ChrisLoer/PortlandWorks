@@ -1,53 +1,722 @@
 const fs = require('fs').promises;
 const path = require('path');
 
+// Department enrichment dictionary with functional categories, authorized FTEs, capital/operating splits, and key programs
+const ENRICHMENT_MAP = {
+  // === CITY OF PORTLAND ===
+  'police-2024-25': {
+    name: 'Portland Police Bureau',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'public-safety',
+    authorizedFte: 1224.0,
+    classification: 'operating',
+    operatingExpense: 295055810,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Precinct Patrol', 'Investigations & Forensics', 'Behavioral Health Unit', 'Traffic Safety', 'Training & Accountability'],
+  },
+  'fire-2024-25': {
+    name: 'Portland Fire & Rescue',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'public-safety',
+    authorizedFte: 767.9,
+    classification: 'mixed',
+    operatingExpense: 187209032,
+    capitalExpense: 6600000,
+    debtExpense: 0,
+    keyPrograms: ['Emergency Emergency Response & Fire Suppression', 'Community Health & Portland Street Response (PSR)', 'Fire Prevention & Investigations', 'Emergency Operations & Water Rescue'],
+  },
+  'boec-2024-25': {
+    name: 'Bureau of Emergency Communications (911)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'public-safety',
+    authorizedFte: 169.9,
+    classification: 'operating',
+    operatingExpense: 38446141,
+    capitalExpense: 1679292,
+    debtExpense: 0,
+    keyPrograms: ['911 Emergency Call Taking', 'Police/Fire/EMS Dispatch', 'NextGen 911 Technology', 'Non-Emergency 311 Coordination'],
+  },
+  'pbem-2024-25': {
+    name: 'Portland Bureau of Emergency Management',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'public-safety',
+    authorizedFte: 20.9,
+    classification: 'operating',
+    operatingExpense: 9566649,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Citywide Disaster Readiness', 'Neighborhood Emergency Teams (NET)', 'Emergency Coordination Center Operations', 'Seismic Resilience Planning'],
+  },
+  'transportation-2024-25': {
+    // City PBOT
+    id: 'pbot-transportation-2024-25',
+    name: 'Portland Bureau of Transportation (PBOT)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'transportation',
+    authorizedFte: 1044.0,
+    classification: 'mixed',
+    operatingExpense: 289864042,
+    capitalExpense: 124297695,
+    debtExpense: 19438492,
+    keyPrograms: ['Street Maintenance & Paving', 'Vision Zero & Traffic Safety', 'Parking Operations & Enforcement', 'Bikeways & Pedestrian Corridors', 'Portland Aerial Tram & Streetcar'],
+  },
+  'water-2024-25': {
+    name: 'Portland Water Bureau',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'utilities-climate',
+    authorizedFte: 658.7,
+    classification: 'mixed',
+    operatingExpense: 231110413,
+    capitalExpense: 1475000000,
+    debtExpense: 69005227,
+    keyPrograms: ['Bull Run Watershed Protection', 'Bull Run Filtration Project', 'Drinking Water Distribution Network', 'Groundwater Pump Stations', 'Water Quality Monitoring'],
+  },
+  'environmental-services-2024-25': {
+    name: 'Bureau of Environmental Services (BES)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'utilities-climate',
+    authorizedFte: 671.0,
+    classification: 'mixed',
+    operatingExpense: 220000000,
+    capitalExpense: 1285489691,
+    debtExpense: 150035210,
+    keyPrograms: ['Columbia Boulevard Wastewater Treatment', 'Tryon Creek Wastewater Facility', 'Sewer Pipe Rehabilitation', 'Willamette River & Watershed Health', 'Green Stormwater Infrastructure'],
+  },
+  'pcef-2024-25': {
+    name: 'Portland Clean Energy Fund (PCEF)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'utilities-climate',
+    authorizedFte: 35.0,
+    classification: 'operating',
+    operatingExpense: 144593938,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Community Climate Action Grants', 'Residential Heat Pump & Energy Efficiency', 'Tree Canopy & Green Spaces', 'Clean Energy Workforce Development', 'Regenerative Agriculture'],
+  },
+  'bps-2024-25': {
+    name: 'Bureau of Planning and Sustainability (BPS)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'utilities-climate',
+    authorizedFte: 150.8,
+    classification: 'operating',
+    operatingExpense: 37500000,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Comprehensive City Planning', 'Climate Emergency Workplan', 'Waste & Curbside Recycling Policy', 'Historic Preservation & Zoning', 'Urban Design & Land Use'],
+  },
+  'parks-2024-25': {
+    name: 'Portland Parks & Recreation',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'community-culture',
+    authorizedFte: 836.2,
+    classification: 'mixed',
+    operatingExpense: 297166556,
+    capitalExpense: 309841098,
+    debtExpense: 782482,
+    keyPrograms: ['Park Maintenance & Safety', 'Community Centers & Public Pools', 'Urban Forestry & Tree Planting', 'Youth Summer Camps & Arts Programs', 'Park Rangers & Habitat Care'],
+  },
+  'housing-2024-25': {
+    name: 'Portland Housing Bureau (PHB)',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'housing-homelessness',
+    authorizedFte: 87.0,
+    classification: 'mixed',
+    operatingExpense: 125000000,
+    capitalExpense: 181466914,
+    debtExpense: 1497960,
+    keyPrograms: ['Affordable Housing Construction Financing', 'Permanent Supportive Housing', 'Tenant Protection & Rent Assistance', 'First-Time Homebuyer Assistance', 'Inclusionary Housing Compliance'],
+  },
+  'permitting-development-2024-25': {
+    name: 'Portland Permitting & Development',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'governance-support',
+    authorizedFte: 351.9,
+    classification: 'operating',
+    operatingExpense: 99650000,
+    capitalExpense: 4371927,
+    debtExpense: 0,
+    keyPrograms: ['Consolidated One-Stop Permitting', 'Building & Trade Inspections', 'Land Use Review', 'Code Compliance & Housing Standards', 'Cannabis Licensing & Compliance'],
+  },
+  'civic-life-2024-25': {
+    name: 'Office of Community & Civic Life',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'community-culture',
+    authorizedFte: 14.9,
+    classification: 'operating',
+    operatingExpense: 6320088,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Neighborhood Association Support', 'Civic Engagement Grants', 'Immigrant & Refugee Integration', 'Noise Control & Graffiti Abatement Support'],
+  },
+  'omf-2024-25': {
+    name: 'City Administration & Shared Services',
+    administrativeUnit: 'City of Portland',
+    administrativeUnitId: 'portland-city',
+    functionalCategory: 'governance-support',
+    authorizedFte: 542.5,
+    classification: 'mixed',
+    operatingExpense: 215000000,
+    capitalExpense: 33861099,
+    debtExpense: 0,
+    keyPrograms: ['Bureau of Technology Services (BTS)', 'Fleet & City Facilities Operations', 'Bureau of Human Resources (BHR)', 'City Attorney Legal Counsel', 'Independent City Auditor'],
+  },
+
+  // === MULTNOMAH COUNTY ===
+  'multco-health-2025': {
+    name: 'Multnomah County Health Department',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'health-human-services',
+    authorizedFte: 1696.3,
+    classification: 'operating',
+    operatingExpense: 545465024,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Community Health Centers (FQHC)', 'Behavioral Health & Addiction Services', 'Crisis Assessment & Treatment Center', 'Communicable Disease Control', 'School-Based Health Centers'],
+  },
+  'multco-humansvcs-2025': {
+    name: 'Department of County Human Services (DCHS)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'health-human-services',
+    authorizedFte: 990.0,
+    classification: 'operating',
+    operatingExpense: 371844534,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Preschool for All (PFA)', 'Aging, Disability & Veterans Services', 'SUN Community Schools', 'Domestic Violence Crisis Response', 'Youth & Family Services'],
+  },
+  'multco-johs-2025': {
+    name: 'Joint Office of Homeless Services (JOHS)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'housing-homelessness',
+    authorizedFte: 122.0,
+    classification: 'operating',
+    operatingExpense: 342490107,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Shelter System Operations & Expansion', 'Supportive Housing Placement', 'Eviction Prevention & Rent Assistance', 'Street Outreach & Navigation Teams', 'Behavioral Health Outreach'],
+  },
+  'multco-sheriff-2025': {
+    name: 'Multnomah County Sheriff’s Office',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'public-safety',
+    authorizedFte: 819.6,
+    classification: 'operating',
+    operatingExpense: 210052294,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Inverness Jail & Justice Center Detention', 'Courthouse & Judicial Security', 'East County Patrol Services', 'River Patrol on Columbia/Willamette', 'Extradition & Civil Process'],
+  },
+  'multco-da-2025': {
+    name: 'Multnomah County District Attorney',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'public-safety',
+    authorizedFte: 235.9,
+    classification: 'operating',
+    operatingExpense: 54623462,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Felony & Misdemeanor Prosecutions', 'Victim Assistance Program', 'Strategic Prosecution & Auto Theft Unit', 'Special Victims & Family Justice', 'Treatment Alternative Courts'],
+  },
+  'multco-communityjustice-2025': {
+    name: 'Department of Community Justice (DCJ)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'public-safety',
+    authorizedFte: 466.1,
+    classification: 'operating',
+    operatingExpense: 119704797,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Adult Parole & Probation Supervision', 'Juvenile Detention & Services', 'Evidence-Based Rehabilitation Programs', 'Community Service Work Crews', 'Restorative Justice Initiatives'],
+  },
+  'multco-library-2025': {
+    name: 'Multnomah County Library',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'community-culture',
+    authorizedFte: 539.3,
+    classification: 'mixed',
+    operatingExpense: 118707915,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['19 Neighborhood Branch Libraries', 'Early Childhood Literacy & Books 2 U', 'Digital Collections & Public Wi-Fi', 'Library Capital Bond Building Projects', 'Multilingual Learning Services'],
+  },
+  'multco-communityservices-2025': {
+    name: 'Department of Community Services (DCS)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'transportation',
+    authorizedFte: 234.0,
+    classification: 'mixed',
+    operatingExpense: 115000000,
+    capitalExpense: 74755360,
+    debtExpense: 0,
+    keyPrograms: ['6 Willamette River Bridges (Burnside, Hawthorne, Morrison, etc.)', 'Earthquake-Ready Burnside Bridge Project', 'County Roads & Culverts', 'Multnomah County Elections Division', 'Multnomah County Animal Services'],
+  },
+  'multco-assets-2025': {
+    name: 'Department of County Assets (DCA)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'governance-support',
+    authorizedFte: 406.5,
+    classification: 'mixed',
+    operatingExpense: 250000000,
+    capitalExpense: 356444749,
+    debtExpense: 0,
+    keyPrograms: ['County IT & Enterprise Systems', 'County Facilities & Capital Projects', 'Motor Pool & Green Fleet Maintenance', 'Records & Archives Management'],
+  },
+  'multco-management-2025': {
+    name: 'Department of County Management (DCM)',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'governance-support',
+    authorizedFte: 312.0,
+    classification: 'operating',
+    operatingExpense: 264818952,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Assessment, Recording & Taxation (DART)', 'County Budget & Financial Planning', 'Central Human Resources & Labor Relations', 'Civil Rights & Title VI Oversight'],
+  },
+  'multco-nondepartmental-2025': {
+    name: 'Countywide Nondepartmental & Reserves',
+    administrativeUnit: 'Multnomah County',
+    administrativeUnitId: 'multnomah-county',
+    functionalCategory: 'governance-support',
+    authorizedFte: 146.3,
+    classification: 'operating',
+    operatingExpense: 236751899,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Board of County Commissioners Office', 'Independent County Auditor', 'County General Fund Contingency', 'Legal Counsel & Risk Fund Reserves'],
+  },
+
+  // === METRO ===
+  'supportive-housing-2024-25': {
+    name: 'Metro Supportive Housing Services (SHS)',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'housing-homelessness',
+    authorizedFte: 35.0,
+    classification: 'operating',
+    operatingExpense: 807598166,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Tri-County Tax Collections & Allocation', 'Disbursements to Multnomah, Washington, Clackamas', 'Permanent Supportive Housing Subsidies', 'Regional Outcomes Dashboard & Oversight'],
+  },
+  'affordable-housing-2024-25': {
+    name: 'Metro Affordable Housing Bond',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'housing-homelessness',
+    authorizedFte: 20.0,
+    classification: 'capital',
+    operatingExpense: 0,
+    capitalExpense: 362560310,
+    debtExpense: 40400000,
+    keyPrograms: ['4,700+ Affordable Apartment Financing', 'Deeply Affordable Units (0-30% MFI)', 'Family-Sized Affordable Housing', 'Regional Land Acquisition'],
+  },
+  'parks-nature-2024-25': {
+    name: 'Metro Parks & Nature',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'community-culture',
+    authorizedFte: 145.0,
+    classification: 'mixed',
+    operatingExpense: 42306014,
+    capitalExpense: 58000000,
+    debtExpense: 0,
+    keyPrograms: ['17,000+ Acres of Protected Natural Areas', 'Oxbow & Blue Lake Regional Parks', 'Regional Trails (Springwater, Marine Drive)', 'Natural Areas Bond Restoration Grants'],
+  },
+  'zoo-2024-25': {
+    name: 'Oregon Zoo',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'community-culture',
+    authorizedFte: 210.0,
+    classification: 'mixed',
+    operatingExpense: 67280111,
+    capitalExpense: 11000000,
+    debtExpense: 0,
+    keyPrograms: ['Wildlife Conservation & Species Recovery', 'Animal Care & Veterinary Medicine', 'Public STEM & Wildlife Education', 'Zoo Infrastructure & Guest Experience'],
+  },
+  'merc-venues-2024-25': {
+    name: 'MERC Visitor Venues (Convention Center, Expo, P5)',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'community-culture',
+    authorizedFte: 180.0,
+    classification: 'operating',
+    operatingExpense: 112740294,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Oregon Convention Center', 'Portland’5 Centers for the Arts (Keller, Schnitzer)', 'Portland Expo Center Operations', 'Visitor Economy & Cultural Programming'],
+  },
+  'solid-waste-2024-25': {
+    name: 'Waste Prevention & Environmental Services',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'utilities-climate',
+    authorizedFte: 175.0,
+    classification: 'mixed',
+    operatingExpense: 137892000,
+    capitalExpense: 24333478,
+    debtExpense: 0,
+    keyPrograms: ['Metro Central & South Transfer Stations', 'Household Hazardous Waste Disposal', 'Regional Recycling & Composting System', 'RID Patrol (Illegal Dumping Cleanup)'],
+  },
+  'metro-general-fund-2024-25': {
+    name: 'Metro Regional Governance & Planning',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'governance-support',
+    authorizedFte: 250.0,
+    classification: 'operating',
+    operatingExpense: 220000000,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Urban Growth Boundary (UGB) Planning', 'Regional Transportation Plan (RTP)', 'Directly Elected Metro Council', 'Regional Land Use Research & GIS'],
+  },
+  'planning-development-2024-25': {
+    name: 'Metro Planning & Development Research',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'governance-support',
+    authorizedFte: 45.0,
+    classification: 'operating',
+    operatingExpense: 15893681,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Regional Transit-Oriented Development (TOD)', 'Community Development Grants', 'Regional Economic Modeling', 'Growth Management Policy'],
+  },
+  'metro-debt-service-2024-25': {
+    name: 'Metro Debt Service & Bond Obligations',
+    administrativeUnit: 'Metro',
+    administrativeUnitId: 'portland-metro',
+    functionalCategory: 'governance-support',
+    authorizedFte: 0,
+    classification: 'debt',
+    operatingExpense: 0,
+    capitalExpense: 0,
+    debtExpense: 92662993,
+    keyPrograms: ['General Obligation Bond Principal & Interest', 'Natural Areas Bond Debt Payments', 'Affordable Housing Bond Debt Service'],
+  },
+
+  // === TRIMET ===
+  'transportation-2024-25-trimet': {
+    id: 'trimet-transportation-2024-25',
+    name: 'TriMet Bus & MAX Operations',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 1850.0,
+    classification: 'mixed',
+    operatingExpense: 322357557,
+    capitalExpense: 13550272,
+    debtExpense: 0,
+    keyPrograms: ['Fixed Route Bus Network (79 routes)', 'MAX Light Rail (Red, Blue, Green, Orange, Yellow)', 'WES Commuter Rail', 'LIFT Paratransit Accessible Service'],
+  },
+  'maintenance-2024-25': {
+    name: 'TriMet Maintenance Division',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 912.0,
+    classification: 'mixed',
+    operatingExpense: 185206853,
+    capitalExpense: 74546549,
+    debtExpense: 0,
+    keyPrograms: ['Bus Fleet Inspections & Overhauls', 'MAX Vehicle Mechanical Maintenance', 'Overhead Catenary & Substation Power', 'Track, Switch & Signal Maintenance'],
+  },
+  'safety-security-2024-25': {
+    name: 'TriMet Safety, Security & Transit Police',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'public-safety',
+    authorizedFte: 165.0,
+    classification: 'mixed',
+    operatingExpense: 79464672,
+    capitalExpense: 7014861,
+    debtExpense: 0,
+    keyPrograms: ['Transit Police Division Intergovernmental Unit', 'Customer Safety Supervisors', 'Station Security Cameras & Surveillance', 'Systemwide Emergency Drills & Response'],
+  },
+  'tsas-2024-25': {
+    name: 'TriMet Transit Systems & Asset Support',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 125.0,
+    classification: 'operating',
+    operatingExpense: 20711290,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Bus Stops & Transit Centers Upgrades', 'Elevators & Escalators Maintenance', 'Shelter Cleaning & Maintenance', 'System Asset Management Compliance'],
+  },
+  'engineering-construction-2024-25': {
+    name: 'TriMet Capital Engineering & Construction',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 75.0,
+    classification: 'capital',
+    operatingExpense: 4457595,
+    capitalExpense: 76807144,
+    debtExpense: 0,
+    keyPrograms: ['A Better Red MAX Extension & Reliability', 'Zero-Emission Bus Charging Stations', 'Blue Line Station Rehabilitation', '82nd Avenue Transit Priority Corridors'],
+  },
+  'it-2024-25': {
+    name: 'TriMet Information Technology & Fastpass',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'governance-support',
+    authorizedFte: 95.0,
+    classification: 'mixed',
+    operatingExpense: 35373178,
+    capitalExpense: 10887708,
+    debtExpense: 0,
+    keyPrograms: ['Hop Fastpass Electronic Fare System', 'Automated Vehicle Location & Dispatch (CAD/AVL)', 'Real-Time Bus Arrival Signs (TransitTracker)', 'Cybersecurity & Data Center Networks'],
+  },
+  'finance-admin-2024-25': {
+    name: 'TriMet Finance & Administration',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'governance-support',
+    authorizedFte: 80.0,
+    classification: 'mixed',
+    operatingExpense: 35954434,
+    capitalExpense: 12691287,
+    debtExpense: 0,
+    keyPrograms: ['Employer Payroll Tax Collection Monitoring', 'Federal FTA Grant Administration', 'Financial Reporting & Accounting', 'Procurement & Contracting'],
+  },
+  'public-affairs-2024-25': {
+    name: 'TriMet Public Affairs & Customer Service',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 90.0,
+    classification: 'mixed',
+    operatingExpense: 20100906,
+    capitalExpense: 1200000,
+    debtExpense: 0,
+    keyPrograms: ['Customer Service Call Center & Trip Planning', 'Community Relations & Outreach', 'Marketing, Rider Information & Service Alerts', 'Government Affairs'],
+  },
+  'hr-2024-25': {
+    name: 'TriMet Human Resources & Labor Relations',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'governance-support',
+    authorizedFte: 45.0,
+    classification: 'operating',
+    operatingExpense: 11475579,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Bus & Train Operator Recruitment', 'ATU 757 Union Collective Bargaining', 'Employee Healthcare Benefits Administration', 'Commercial Driver License Training'],
+  },
+  'legal-2024-25': {
+    name: 'TriMet Legal & Real Estate',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'governance-support',
+    authorizedFte: 25.0,
+    classification: 'mixed',
+    operatingExpense: 10147165,
+    capitalExpense: 1500000,
+    debtExpense: 0,
+    keyPrograms: ['Litigation Defense & Risk Management', 'Transit-Oriented Development (TOD) Joint Ventures', 'Right-of-Way Acquisition & Property Management'],
+  },
+  'strategy-planning-2024-25': {
+    name: 'TriMet Service Planning & Scheduling',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'transportation',
+    authorizedFte: 20.0,
+    classification: 'mixed',
+    operatingExpense: 4797951,
+    capitalExpense: 1754409,
+    debtExpense: 0,
+    keyPrograms: ['Forward Together Service Plan', 'Quarterly Route Scheduling & Timetables', 'Demographic Title VI Service Equity Analysis', 'Regional Transportation Demand Modeling'],
+  },
+  'idea-2024-25': {
+    name: 'TriMet Inclusion, Diversity & Accessibility',
+    administrativeUnit: 'TriMet',
+    administrativeUnitId: 'trimet-district',
+    functionalCategory: 'governance-support',
+    authorizedFte: 15.0,
+    classification: 'operating',
+    operatingExpense: 2839974,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Disadvantaged Business Enterprise (DBE) Contracting', 'ADA Compliance & Senior Transit Accessibility', 'Civil Rights Program Administration'],
+  },
+
+  // === PORTLAND PUBLIC SCHOOLS (PPS) ===
+  'pps-instruction-2024-25': {
+    name: 'PPS Classroom Instruction & Teachers',
+    administrativeUnit: 'Portland Public Schools',
+    administrativeUnitId: 'pps-district',
+    functionalCategory: 'education-youth',
+    authorizedFte: 3407.2,
+    classification: 'operating',
+    operatingExpense: 534305000,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Elementary, Middle & High School Teachers', 'Special Education Classrooms & Inclusion', 'Bilingual Immersion (Spanish, Mandarin, Japanese, Russian, Vietnamese)', 'Career & Technical Education (CTE)'],
+  },
+  'pps-support-2024-25': {
+    name: 'PPS Student Support & School Staff',
+    administrativeUnit: 'Portland Public Schools',
+    administrativeUnitId: 'pps-district',
+    functionalCategory: 'education-youth',
+    authorizedFte: 2512.0,
+    classification: 'operating',
+    operatingExpense: 452149000,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['School Counselors, Social Workers & Psychologists', 'Principals, Vice Principals & School Office Staff', 'Building Custodial Operations & Safety', 'Student Transportation & Yellow Buses', 'Classroom Technology & Wi-Fi'],
+  },
+  'pps-facilities-2024-25': {
+    name: 'PPS School Modernization & Capital Bonds',
+    administrativeUnit: 'Portland Public Schools',
+    administrativeUnitId: 'pps-district',
+    functionalCategory: 'education-youth',
+    authorizedFte: 50.0,
+    classification: 'capital',
+    operatingExpense: 0,
+    capitalExpense: 1027836000,
+    debtExpense: 0,
+    keyPrograms: ['Historic High School Modernization (Benson Tech, Cleveland, Wells)', 'Districtwide Seismic Retrofits', 'Lead Water Pipe & Roof Replacements', 'Accessibility (ADA) Upgrades'],
+  },
+  'pps-enterprise-2024-25': {
+    name: 'PPS Nutrition Services & Student Meals',
+    administrativeUnit: 'Portland Public Schools',
+    administrativeUnitId: 'pps-district',
+    functionalCategory: 'education-youth',
+    authorizedFte: 238.9,
+    classification: 'operating',
+    operatingExpense: 33302000,
+    capitalExpense: 0,
+    debtExpense: 0,
+    keyPrograms: ['Universal Free Student Breakfasts & Lunches', 'Fresh Farm-to-School Local Produce', 'Summer Food Service Program', 'Student Meal Nutritional Standards'],
+  },
+  'pps-debt-2024-25': {
+    name: 'PPS Debt Service & Pension Bonds (PERS UAL)',
+    administrativeUnit: 'Portland Public Schools',
+    administrativeUnitId: 'pps-district',
+    functionalCategory: 'education-youth',
+    authorizedFte: 0,
+    classification: 'debt',
+    operatingExpense: 0,
+    capitalExpense: 0,
+    debtExpense: 262135000,
+    keyPrograms: ['Voter-Approved School Bond Principal & Interest', 'PERS Unfunded Actuarial Liability (UAL) Debt Service'],
+  },
+};
+
 async function generateStaticData() {
   try {
-    // Create the public/api directory if it doesn't exist
     const apiDir = path.join(process.cwd(), 'public/api');
     await fs.mkdir(apiDir, { recursive: true });
 
-    // Generate combined budget data
     const budgetsDir = path.join(process.cwd(), 'src/data/parsed_budgets');
     const files = await fs.readdir(budgetsDir);
     const jsonFiles = files.filter(file => file.endsWith('.json'));
-    
-    const budgets = await Promise.all(
+
+    const parsedFiles = await Promise.all(
       jsonFiles.map(async (file) => {
         const filePath = path.join(budgetsDir, file);
         const content = await fs.readFile(filePath, 'utf-8');
-        return JSON.parse(content);
+        return { file, data: JSON.parse(content) };
       })
     );
-    
+
+    const departments = [];
+
+    for (const item of parsedFiles) {
+      for (const dept of item.data.departments || []) {
+        // Disambiguate TriMet transportation vs PBOT transportation
+        let lookupId = dept.id;
+        if (lookupId === 'transportation-2024-25' && dept.administrativeUnit === 'TriMet') {
+          lookupId = 'transportation-2024-25-trimet';
+        }
+
+        const enrichment = ENRICHMENT_MAP[lookupId] || {};
+
+        const enrichedDept = {
+          ...dept,
+          id: enrichment.id || dept.id,
+          name: enrichment.name || dept.name,
+          administrativeUnit: enrichment.administrativeUnit || dept.administrativeUnit,
+          administrativeUnitId: enrichment.administrativeUnitId || (dept.administrativeUnit ? dept.administrativeUnit.toLowerCase().replace(/\s+/g, '-') : 'city'),
+          functionalCategory: enrichment.functionalCategory || 'governance-support',
+          authorizedFte: enrichment.authorizedFte !== undefined ? enrichment.authorizedFte : (dept.metrics && dept.metrics.find(m => m.id === 'authorized-fte') ? Number(dept.metrics.find(m => m.id === 'authorized-fte').value) : undefined),
+          classification: enrichment.classification || dept.classification || 'operating',
+          operatingExpense: enrichment.operatingExpense !== undefined ? enrichment.operatingExpense : dept.operatingExpense,
+          capitalExpense: enrichment.capitalExpense !== undefined ? enrichment.capitalExpense : dept.capitalExpense,
+          debtExpense: enrichment.debtExpense !== undefined ? enrichment.debtExpense : dept.debtExpense,
+          keyPrograms: enrichment.keyPrograms || dept.keyPrograms || [],
+        };
+
+        departments.push(enrichedDept);
+      }
+    }
+
     const combinedBudget = {
-      fiscalYear: budgets[0].fiscalYear,
+      fiscalYear: '2024-25',
       lastUpdated: new Date().toISOString().split('T')[0],
-      dataSource: 'Combined Budget Data',
-      dataSourceUrl: '',
-      departments: budgets.flatMap(budget => budget.departments)
+      dataSource: 'Combined Budget Data (City of Portland, Multnomah County, Metro, TriMet, PPS)',
+      dataSourceUrl: 'https://www.tsccmultco.com/',
+      departments,
     };
-    
+
     // Copy administrative units data
     const adminUnitsPath = path.join(process.cwd(), 'src/data/administrative-units.json');
     const adminUnitsContent = await fs.readFile(adminUnitsPath, 'utf-8');
-    
-    // Copy capital vs operating data
-    const capitalVsOperatingPath = path.join(process.cwd(), 'src/data/capital-vs-operating.json');
-    const capitalVsOperatingContent = await fs.readFile(capitalVsOperatingPath, 'utf-8');
-    
-    // Write all files to the public/api directory
+
+    // Generate enriched capital-vs-operating dataset
+    const capitalVsOperating = {
+      lastUpdated: new Date().toISOString().split('T')[0],
+      departments: departments.map(d => ({
+        id: d.id,
+        classification: d.classification,
+        operatingExpense: d.operatingExpense,
+        capitalExpense: d.capitalExpense,
+        debtExpense: d.debtExpense,
+        functionalCategory: d.functionalCategory,
+        authorizedFte: d.authorizedFte,
+      })),
+    };
+
+    // Also write to src/data/combined_budget.json so server components can import it directly!
+    await fs.writeFile(path.join(process.cwd(), 'src/data/combined_budget.json'), JSON.stringify(combinedBudget, null, 2));
+
     await Promise.all([
       fs.writeFile(path.join(apiDir, 'budgets.json'), JSON.stringify(combinedBudget, null, 2)),
       fs.writeFile(path.join(apiDir, 'administrative-units.json'), adminUnitsContent),
-      fs.writeFile(path.join(apiDir, 'capital-vs-operating.json'), capitalVsOperatingContent)
+      fs.writeFile(path.join(apiDir, 'capital-vs-operating.json'), JSON.stringify(capitalVsOperating, null, 2)),
     ]);
-    
-    console.log('Successfully generated all static data files');
+
+    console.log(`Successfully generated static data with ${departments.length} enriched departments!`);
   } catch (error) {
     console.error('Error generating static data:', error);
     process.exit(1);
   }
 }
 
-generateStaticData(); 
+generateStaticData();
